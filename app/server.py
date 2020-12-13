@@ -3,7 +3,7 @@ import asyncio
 import uvicorn
 from fastai.vision.all import *
 import torchvision.transforms as tfms
-from PIL import Image
+from PIL import Image as im
 from io import BytesIO
 from starlette.applications import Starlette
 from starlette.middleware.cors import CORSMiddleware
@@ -60,7 +60,7 @@ async def homepage(request):
 async def analyze(request):
     img_data = await request.form()
     img_bytes = await (img_data['file'].read())
-    img = Image.open(BytesIO(img_bytes))
+    img = im.open(BytesIO(img_bytes))
     img = Image(tfms.ToTensor()(img))
     pred = learn.predict(img)
     prediction = pred[0]
