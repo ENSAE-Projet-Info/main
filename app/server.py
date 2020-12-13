@@ -37,7 +37,7 @@ async def setup_learner():
         return learn
     except :
         print('An exception occured')
-         raise
+        raise
 
 
 loop = asyncio.get_event_loop()
