@@ -33,7 +33,7 @@ async def download_file(url, dest):
 async def setup_learner():
     #await download_file(export_file_url, path / export_file_name)
     try:
-        learn = load_learner(fname='model_1_test_94.pkl')
+        learn = load_learner(path='',fname='model_1_test_94.pkl')
         return learn
     except :
         print('An exception occured')
