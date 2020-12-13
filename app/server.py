@@ -2,11 +2,15 @@ import aiohttp
 import asyncio
 import uvicorn
 from fastai.vision.all import *
+from PIL import Image
 from io import BytesIO
 from starlette.applications import Starlette
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
+
+
+
 
 # direct link generated for our model
 #export_file_url = 'https://drive.google.com/uc?export=download&id=1-7lp7rG9SVIxThWeH2xRspGzZD8p8y7E'
@@ -55,7 +59,7 @@ async def homepage(request):
 async def analyze(request):
     img_data = await request.form()
     img_bytes = await (img_data['file'].read())
-    img = open_image(BytesIO(img_bytes))
+    img = Image.open(BytesIO(img_bytes))
     pred = learn.predict(img)
     prediction = pred[0]
     return JSONResponse({'result': str(prediction)})
