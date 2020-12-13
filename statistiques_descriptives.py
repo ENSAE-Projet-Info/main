@@ -99,7 +99,7 @@ def major_colour(image_matrix):
                 colour_count[closest_colour(image_matrix[i,j,:])]+=1
     return(max(colour_count, key=lambda key: colour_count[key]))
 
-def colour_repartition_mean(classe):
+def colour_repartition_mean(classe, percentage=1):
     """Prend une entrée un type de vetement au format str et renvoie la repartition de la couleur majoritaire pour chaque image
     du type de vêtement avec la méthode "mean".
     Méthode "mean" : étant donné une image, calcule la couleur la plus proche (distance euclidienne)
@@ -109,6 +109,9 @@ def colour_repartition_mean(classe):
     ----------
     arg1 : str
         Nom de la classe (type d'habit) à analyser, au format str. Par exemple 'pull'
+    arg2 : float
+        Pourcentage de la classe que l'on charge. Doit être très petit lorsque l'on veut voir comment le programme fonctionne,
+        car ce dernier est très long. Vaut 1 par défaut
 
     Returns
     -------
@@ -128,7 +131,7 @@ def colour_repartition_mean(classe):
               'Violet': 0,
               'Rose': 0}
     vclasse = str_to_var[classe]
-    for i in range(len(vclasse)):
+    for i in range(percentage * len(vclasse)):
     #Importation de l'image en rgb
         img = Image.open(path + '\\' + classe + '/' + vclasse[i])
         img_cropped = crop(img)
@@ -142,7 +145,7 @@ def colour_repartition_mean(classe):
             pass
     return(colour_count)
 
-def colour_repartition_major(classe):
+def colour_repartition_major(classe, percentage=1):
     """Prend une entrée un type de vetement au format str et renvoie la repartition de la couleur majoritaire pour chaque image
     du type de vêtement avec la méthode "major".
     Méthode "major" : la couleur d'un vêtement est donné par la fonction "major_colour" 
@@ -151,6 +154,9 @@ def colour_repartition_major(classe):
     ----------
     arg1 : str
         Nom de la classe (type d'habit) à analyser, au format str. Par exemple 'pull'
+    arg2 : float
+        Pourcentage de la classe que l'on charge. Doit être très petit lorsque l'on veut voir comment le programme fonctionne,
+        car ce dernier est très long. Vaut 1 par défaut
 
     Returns
     -------
@@ -169,7 +175,7 @@ def colour_repartition_major(classe):
               'Violet': 0,
               'Rose': 0}
     vclasse = str_to_var[classe]
-    for i in range(len(vclasse)):
+    for i in range(percentage * len(vclasse)):
     #Importation de l'image en rgb
         img = Image.open(path + '\\' + classe + '/' + vclasse[i])
         img_cropped = crop(img)
@@ -182,7 +188,7 @@ def colour_repartition_major(classe):
             pass
     return(colour_count)
 
-def colour_repartition_cluster(classe, ncluster =5):
+def colour_repartition_cluster(classe, percentage = 1 ncluster =5):
     """Prend une entrée un type de vetement au format str, et un nombre de cluster (par défaut 5)
     et renvoie la repartition de la couleur majoritaire pour chaque image du type de vêtement avec la méthode "cluster".
     Méthode cluster : Trouve la couleur majoritaire d'un vêtement avec la méthode des k-means
@@ -191,7 +197,9 @@ def colour_repartition_cluster(classe, ncluster =5):
     ----------
     arg1 : str
         Nom de la classe (type d'habit) à analyser, au format str. Par exemple 'pull'
-
+    arg2 : float
+        Pourcentage de la classe que l'on charge. Doit être très petit lorsque l'on veut voir comment le programme fonctionne,
+        car ce dernier est très long. Vaut 1 par défaut
     Returns
     -------
     dict
@@ -209,7 +217,7 @@ def colour_repartition_cluster(classe, ncluster =5):
               'Violet': 0,
               'Rose': 0}
     vclasse = str_to_var[classe]
-    for i in range(len(vclasse)):
+    for i in range(percentage * len(vclasse)):
     #Importation de l'image en rgb
         img = Image.open(path + '\\' + classe + '/' + vclasse[i])
         img_cropped = crop(img)
@@ -229,3 +237,5 @@ def colour_repartition_cluster(classe, ncluster =5):
         else:
             pass
     return(colour_count)
+
+
