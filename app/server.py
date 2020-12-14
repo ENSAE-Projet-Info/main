@@ -61,7 +61,7 @@ async def analyze(request):
     img_data = await request.form()
     img_bytes = await (img_data['file'].read()) 
     img_pil = PIL.Image.open(BytesIO(img_bytes)).save('inference.jpg')
-    pred = learn.predict(load_image('inference.jpg'))
+    pred = learn.predict(Path('inference.jpg'))
     prediction = pred[0]
     return JSONResponse({'result': str(prediction)})
 
