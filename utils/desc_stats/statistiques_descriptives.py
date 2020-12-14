@@ -303,8 +303,8 @@ def colour_mean(img_jpg) :
     return img_mean
 
 
-  
-  
+
+
 def colour_var(img_jpg) :
     """ Transforme chaque pixel de l'image initiale par sa "variance". La variance calcule l'écart quadratique entre la couleur du pixel et sa moyenne.
     
@@ -326,8 +326,8 @@ def colour_var(img_jpg) :
     return img_var
 
 
-  
-  
+
+
 def is_logo(img_jpg):    
     """Détecte si un t-shirt comporte un logo. Utilise une technique de détection par la variance.
     
@@ -368,11 +368,12 @@ def is_logo(img_jpg):
         return 1
     else :
         return 0
-    
-    
-    
+
+
+
+
 def is_logo_feedback(img_jpg):    
-    """Fonction is_logo enrichie d'un retour à l'utilisateur. Imprime les résultats à chaque étape. 
+    """Fonction is_logo enrichie d'un retour à l'utilisateur. Imprime l'image obtenue par la technique de variance. 
     Détecte si un t-shirt comporte un logo. Utilise une technique de détection par la variance.
     
     Paramètres
@@ -384,6 +385,8 @@ def is_logo_feedback(img_jpg):
     ----------
     bool
         Renvoie un booléen : 1 si le T-shirt comporte un logo, 0 sinon.
+    float
+        Renvoie le "score" de variance. Il a été choisi arbitrairement qu'un score supérieur à 12.6 signifiait qu'un t-shirt comportait un logo.
     """
     img_arr = img_to_array(img_jpg)
     n = len(img_arr)
@@ -413,13 +416,15 @@ def is_logo_feedback(img_jpg):
     plt.imshow(img_var)
     plt.show()
     if score>12.6 :
-        return 1
+        print("LOGO. Score :",score)
+        return (1,score)
     else :
-        return 0
+        print("PAS DE LOGO. Score :",score)
+        return (0,score)
 
-      
-      
+    
 
+    
 def is_white(pixel, threshold=245, dist=5):
     """Détecte si un pixel est blanc (ou assez proche du blanc, selon un certain threshold et une certaine distance) ou non.
     
@@ -439,11 +444,12 @@ def is_white(pixel, threshold=245, dist=5):
     """
     r,g,b = pixel
     if (r>threshold)& (g>threshold)& (b>threshold)& (np.abs(r-g)<dist)& (np.abs(r-b)<dist)& (np.abs(g-b)<dist) : 
-      return True
+        return True
     else :
-      return False
+        return False
 
-    
+
+
     
 def white_percentage(img_jpg,threshold=245, dist=5) :
     """Donne le pourcentage de pixels blanc (selon une certaine notion de distance et un certain threshold) d'une image.
@@ -475,8 +481,8 @@ def white_percentage(img_jpg,threshold=245, dist=5) :
                 compteur +=1
     return compteur/taille_img*100
 
-  
-  
+
+
 
 def white_to_grey(img_jpg,threshold=245, dist=5):
     """Transforme tous les pixel considérés comme blancs (selon une certaine notion de distance et un certain threshold) en pixels gris.
@@ -508,8 +514,9 @@ def white_to_grey(img_jpg,threshold=245, dist=5):
         img_corrigee = array_to_img(img_corrigee_arr)
     return img_corrigee
 
-  
-  
+
+
+
 def is_white_background(img_jpg,threshold=245, dist=5, percentage=30) :
     """Détermine si le fond d'une image est blanc ou non.
     
@@ -530,9 +537,46 @@ def is_white_background(img_jpg,threshold=245, dist=5, percentage=30) :
         Renvoie un booléen : 1 si le fond est blanc, 0 sinon.
     """
     return white_percentage(img_jpg,threshold=245, dist=5) > percentage
+
+
+
+
+def is_white_background_feedback(img_jpg,threshold=245, dist=5, percentage=30) :
+    """Fonction is_white_background enrichie d'un retour à l'utilisateur. Dans le cours de la fonction, imprime l'image d'entrée, l'image d'entrée dont les pixels blancs ont été grisés.
+    Détermine si le fond d'une image est blanc ou non.
     
+    Paramètres
+    ----------
+    img_jpg : Image
+        Image d'entrée au format RGB.
+    threshold : int
+        Threshold pour la limite du blanc.
+    dist : int
+        Distance pour la limite du blanc.
+    percentage : int
+        Pourcentage de blanc de l'image à partir duquel on considère que l'image est effectivement sur fond blanc.
+        
+    Retours
+    ----------
+    bool
+        Renvoie un booléen : 1 si le fond est blanc, 0 sinon.
+    float
+        Pourcentage de pixels blancs de la photo.
+    """
+    plt.imshow(img_jpg)
+    plt.show()
+    plt.imshow(white_to_grey(img_jpg))
+    plt.show()
+    white_percent = white_percentage(img_jpg,threshold=245, dist=5)
+    if white_percent > percentage :
+        print("FOND BLANC. Pourcentage de pixels blancs : ", white_percent)
+        return (1, white_percent )
+    else :
+        print("PAS DE FOND BLANC. Pourcentage de pixels blancs : ",white_percent)
+        return (0, white_percent )
     
-    
+
+
     
 def is_human_model(path, limit_percent=95) :
     """Détermine si un vêtement est porté par un humain ou non.
@@ -556,11 +600,12 @@ def is_human_model(path, limit_percent=95) :
         return(True, max_percent)
     else :
         return(False, max_percent)
+
     
     
     
 def is_human_model_feedback(path, limit_percent=95) :
-    """Fonction is_human_model enrichie d'un retour à l'utilisateur. Imprime les résultats à chaque étape.        
+    """Fonction is_human_model enrichie d'un retour à l'utilisateur. Imprime l'image analysée par l'algorithme d'opencv.        
     Détermine si un vêtement est porté par un humain ou non.
     
     Paramètres
@@ -574,6 +619,8 @@ def is_human_model_feedback(path, limit_percent=95) :
     ----------
     list
         Retourne une liste dont le premier argument est un booléen : True si le vêtement est porté par un modèle humain, False sinon ; le second argument est le pourcentage de certitude de l'algorithme.
+    float
+        Pourcentage de certitude avec lequel l'algorithme estime que l'image en question contient un humain.
     """
     detectedImage, detections = detector.detectObjectsFromImage(output_type="array", input_image=path, minimum_percentage_probability=0)
     convertedImage = cv2.cvtColor(detectedImage, cv2.COLOR_RGB2BGR)
@@ -584,9 +631,73 @@ def is_human_model_feedback(path, limit_percent=95) :
     
     max_percent = max([detections[i]['percentage_probability'] for i in range(len(detections))]) #plusieurs objets peuvent être détectés 
     if max_percent > limit_percent :
+        print("HUMAIN. Pourcentage obtenu par l'algorithme : ", max_percent)
         return(True, max_percent)
     else :
+        print("NON-HUMAIN. Pourcentage obtenu par l'algorithme : ", max_percent)
         return(False, max_percent)
-       
+    
+    
+    
+def percentage_true(data_img, bool_function) :
+    """Applique une fonction booléenne (agissant sur une image) sur une liste d'images et renvoie le pourcentage d'image renvoyant la valeur True.
+    
+    Paramètres
+    ----------
+    data_img : list
+        Liste d'images, au format RGB.
+    bool_function : function
+        Fonction booléenne, prenant en entrée une image et renvoyant True ou False.
+    
+    Retours
+    ----------
+    float
+        Pourcentage d'image renvoyant la valeur True lorsqu'on leur applique la fonction booléenne.
+    """
+    n = len(data_img)
+    compteur = 0
+    compteur_progression=0 #Permet un suivi utilisateur pour l'avancement de l'algorithme.
+    compteur_progression2=0
+    for i in range(n) :
+        img_jpg = data_img[i]
+        compteur += bool_function(img_jpg)
+        compteur_progression+=1
+        compteur_progression2+=1
+        if  compteur_progression2 ==100 :  
+            print("{} images. Nous en sommes à : {} %".format(compteur_img,round(compteur_img/k * 100,2))) # permet de garder une trace sur le nombre d'images qui ont été traitées pendant l'exécution de l'algorithme, qui peut être très longue...
+            compteur_img2=0 
+    return compteur/n * 100
 
-   
+
+
+
+def percentage_true_feedback(data_img, bool_function_feedback) :
+    """Fonction percentage_true_feedback enrichie d'un retour à l'utilisateur. Imprime un feedback à chaque étape.        
+    Applique une fonction booléenne (agissant sur une image) sur une liste d'images et renvoie le pourcentage d'image renvoyant la valeur True.
+    
+    Paramètres
+    ----------
+    data_img : list
+        Liste d'images, au format RGB.
+    bool_function : function
+        Fonction booléenne, prenant en entrée une image et renvoyant True ou False.
+    
+    Retours
+    ----------
+    float
+        Pourcentage d'image renvoyant la valeur True lorsqu'on leur applique la fonction booléenne.
+    """
+    n = len(data_img)
+    compteur = 0
+    compteur_progression=0
+    compteur_progression2=0
+    for i in range(n) :
+        img_jpg = data_img[i]
+        bool_and_feedback = bool_function_feedback(img_jpg)
+        compteur += bool_and_feedback[0]
+        compteur_progression+=1
+        compteur_progression2+=1
+        if  compteur_progression2 ==100 :  
+            print("{} images. Nous en sommes à : {} %".format(compteur_img,round(compteur_img/k * 100,2))) # permet de garder une trace sur le nombre d'images qui ont été traitées pendant l'exécution de l'algorithme, qui peut être très longue...
+            compteur_img2=0            
+    return compteur/n * 100
