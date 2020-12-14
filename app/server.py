@@ -60,9 +60,8 @@ async def homepage(request):
 async def analyze(request):
     img_data = await request.form()
     img_bytes = await (img_data['file'].read()) 
-    img_pil = PIL.Image.open(BytesIO(img_bytes))
-    img_fastai = open_image(img_pil)  
-    pred = learn.predict(img_fastai)
+    img_pil = PIL.Image.open(BytesIO(img_bytes)).save('inference.jpg')
+    pred = learn.predict(load_image('inference.jpg'))
     prediction = pred[0]
     return JSONResponse({'result': str(prediction)})
 
