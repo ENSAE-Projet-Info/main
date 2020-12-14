@@ -17,6 +17,31 @@ str_to_var = {'pull': pull,
               'tshirt' : tshirt,
               'short' : short}
     
+def first_stats():
+    """Fonction qui indique le nombre de vêtements dans chaque classe et qui trace un histogramme de la
+    taille de chaque fichier
+    
+    Paramètre
+    ----------
+    None
+
+    Retours
+    -------
+    None
+        
+    
+    """
+    size = []
+    for classe in [pull, tshirt, pantalon, short]:
+        str_classe = list(str_to_var.keys())[list(str_to_var.values()).index(classe)]
+        for i in range(len(classe)):
+            size.append(os.path.getsize(path + '/' + str_classe + '/' + classe[i]))
+    sns.distplot(size)
+    print('Il y a {} pulls, {} t-shirt, {} pantalons et {} shorts dans la base de données.'.format(len(pull),
+                                                                                               len(tshirt), 
+                                                                                               len(pantalon),
+                                                                                               len(short)))
+  
 
 def closest_colour(requested_colour):
     """Prend en entré un triplet (r,g,b) correspondant au RGB d'un pixel d'une image,
