@@ -529,7 +529,7 @@ def is_white_background(img_jpg,threshold=245, dist=5, percentage=30) :
     dist : int
         Distance pour la limite du blanc.
     percentage : int
-        Pourcentage de blanc de l'image à partir duquel on considère que l'image est effectivement sur fond blanc.
+        Pourcentage de blanc sur l'image à partir duquel on considère que l'image est effectivement sur fond blanc.
         
     Retours
     ----------
@@ -554,14 +554,14 @@ def is_white_background_feedback(img_jpg,threshold=245, dist=5, percentage=30) :
     dist : int
         Distance pour la limite du blanc.
     percentage : int
-        Pourcentage de blanc de l'image à partir duquel on considère que l'image est effectivement sur fond blanc.
+        Pourcentage de blanc sur l'image à partir duquel on considère que l'image est effectivement à fond blanc.
         
     Retours
     ----------
     bool
         Renvoie un booléen : 1 si le fond est blanc, 0 sinon.
     float
-        Pourcentage de pixels blancs de la photo.
+        Pourcentage de pixels blancs sur la photo.
     """
     plt.imshow(img_jpg)
     plt.show()
@@ -652,7 +652,7 @@ def percentage_true(data_img, bool_function) :
     Retours
     ----------
     float
-        Pourcentage d'image renvoyant la valeur True lorsqu'on leur applique la fonction booléenne.
+        Pourcentage d'images renvoyant la valeur True lorsqu'on leur applique la fonction booléenne.
     """
     n = len(data_img)
     compteur = 0
@@ -685,7 +685,7 @@ def percentage_true_feedback(data_img, bool_function_feedback) :
     Retours
     ----------
     float
-        Pourcentage d'image renvoyant la valeur True lorsqu'on leur applique la fonction booléenne.
+        Pourcentage d'images renvoyant la valeur True lorsqu'on leur applique la fonction booléenne.
     """
     n = len(data_img)
     compteur = 0
