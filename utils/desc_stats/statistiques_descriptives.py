@@ -242,3 +242,325 @@ def colour_repartition_cluster(classe, percentage = 1, ncluster =5):
     return(colour_count)
 
 
+  
+  
+def colour_mean(img_jpg) :
+    """ Transforme chaque pixel de l'image initiale par sa "moyenne". La moyenne est faite sur sa propre couleur et sur celle de ses 8 pixels adjacents.
+    Similaire au flou gaussien.
+    
+    Paramètres
+    ----------
+    img_jpg : Image
+        Image d'entrée au format RGB.
+        
+    Retours
+    ----------
+    Image
+        Renvoie l'image transformée.
+    """
+    img_arr = img_to_array(img_jpg)
+    n = len(img_arr)
+    m = len(img_arr[0])
+    M= np.zeros([n,m,3])
+    for i in range(1, n-1):  
+        M[i,0] = img_arr[i,0]
+        M[i,m-1] = img_arr[i,m-1] #On n'applique pas la moyenne aux bords, on considère qu'on peut les ignorer.
+        for j in range(1,m-1) :
+            M[0,j] = img_arr[0,j]
+            M[n-1,j] = img_arr[n-1,j]   
+            rgb_ij = [] #Couleurs rgb du pixel i,j de l'image en sortie
+            for k in range(3):
+                mean_k = float(int(1/9*(int(img_arr[i,j,k]) + int(img_arr[i-1,j,k]) + int(img_arr[i-1,j-1,k] )+ int(img_arr[i-1,j+1,k]) + int(img_arr[i,j-1,k]) + int(img_arr[i,j+1,k]) + int(img_arr[i+1,j-1,k]) + int(img_arr[i+1,j,k]) + int(img_arr[i+1,j+1,k]))))
+                rgb_ij.append(mean_k)  
+            M[i,j,:]= rgb_ij
+        img_mean = array_to_img(M)
+    return img_mean
+
+
+  
+  
+def colour_var(img_jpg) :
+    """ Transforme chaque pixel de l'image initiale par sa "variance". La variance calcule l'écart quadratique entre la couleur du pixel et sa moyenne.
+    
+    Paramètres
+    ----------
+    img_jpg : Image
+        Image d'entrée au format RGB.
+        
+    Retours
+    ----------
+    Image
+        Renvoie l'image transformée.
+    """
+    img_arr = img_to_array(img_jpg)
+    img_mean = colour_mean(img_jpg)
+    img_mean_arr = img_to_array(img_mean)
+    img_var_arr = abs((img_arr - img_mean_arr))*1.2 #On rajoute un coefficient de façon à "accentuer" la variance. Ce ne sera donc pas la "vraie" variance, mais peu importe pour notre utilisation.
+    img_var = array_to_img(img_var_arr)
+    return img_var
+
+
+  
+  
+def is_logo(img_jpg):    
+    """Détecte si un t-shirt comporte un logo. Utilise une technique de détection par la variance.
+    
+    Paramètres
+    ----------
+    img_jpg : Image
+        Image d'un T-shirt, au format RGB.
+        
+    Retours
+    ----------
+    bool
+        Renvoie un booléen : 1 si le T-shirt comporte un logo, 0 sinon.
+    """
+    img_arr = img_to_array(img_jpg)
+    n = len(img_arr)
+    m = len(img_arr[0])
+    #Ci-dessous : les pourcentages de zoom que l'on souhaite pour couper l'image en haut, en bas, à gauche et à droite pour centrer la photo sur le t-shirt.
+    #Les valeurs ont été choisies arbitrairement.
+    zoom_y_haut = 0.078125
+    zoom_y_bas = 0.9765625
+    zoom_x_gauche = 0.25390625
+    zoom_x_droite = 0.68359375
+    #Ci-dessous : les abscisses et ordonnées délimitant la nouvelle image zoomée.
+    n_0 = int(n*zoom_y_haut) 
+    n_1 = int(n*zoom_y_bas)
+    m_0 = int(m*zoom_x_gauche)
+    m_1 = int(m*zoom_x_droite)
+        
+    img_arr_zoom =img_arr[n_0:n_1,m_0:m_1,:]
+    img_zoom = array_to_img(img_arr_zoom)
+
+    img_var = colour_var(img_zoom) #image des variances
+    score0 = img_var[:,:,0].sum() #somme des variances
+    score1 = img_var[:,:,1].sum()
+    score2 = img_var[:,:,2].sum()
+    score = log(score0 + score1 + score2) #Logarithme pour "aplatir" les scores, qui sont immenses et peu commodes à comparer.        
+    if score>12.6 :
+        return 1
+    else :
+        return 0
+    
+    
+    
+def is_logo_feedback(img_jpg):    
+    """Fonction is_logo enrichie d'un retour à l'utilisateur. Imprime les résultats à chaque étape. 
+    Détecte si un t-shirt comporte un logo. Utilise une technique de détection par la variance.
+    
+    Paramètres
+    ----------
+    img_jpg : Image
+        Image d'un T-shirt, au format RGB.
+        
+    Retours
+    ----------
+    bool
+        Renvoie un booléen : 1 si le T-shirt comporte un logo, 0 sinon.
+    """
+    img_arr = img_to_array(img_jpg)
+    n = len(img_arr)
+    m = len(img_arr[0])
+    #Ci-dessous : les pourcentages de zoom que l'on souhaite pour couper l'image en haut, en bas, à gauche et à droite pour centrer la photo sur le t-shirt.
+    #Les valeurs ont été choisies arbitrairement.
+    zoom_y_haut = 0.078125
+    zoom_y_bas = 0.9765625
+    zoom_x_gauche = 0.25390625
+    zoom_x_droite = 0.68359375
+    #Ci-dessous : les abscisses et ordonnées délimitant la nouvelle image zoomée.
+    n_0 = int(n*zoom_y_haut) 
+    n_1 = int(n*zoom_y_bas)
+    m_0 = int(m*zoom_x_gauche)
+    m_1 = int(m*zoom_x_droite)
+        
+    img_arr_zoom =img_arr[n_0:n_1,m_0:m_1,:]
+    img_zoom = array_to_img(img_arr_zoom)
+
+    img_var = colour_var(img_zoom) #image des variances
+    img_var_arr = img_to_array(img_var)
+    score0 = img_var_arr[:,:,0].sum() #somme des variances
+    score1 = img_var_arr[:,:,1].sum()
+    score2 = img_var_arr[:,:,2].sum()
+    score = log(score0 + score1 + score2) #Logarithme pour "aplatir" les scores, qui sont immenses et peu commodes à comparer.
+    
+    plt.imshow(img_var)
+    plt.show()
+    if score>12.6 :
+        return 1
+    else :
+        return 0
+
+      
+      
+
+def is_white(pixel, threshold=245, dist=5):
+    """Détecte si un pixel est blanc (ou assez proche du blanc, selon un certain threshold et une certaine distance) ou non.
+    
+    Paramètres
+    ----------
+    pixel : list
+        Un pixel donné, au format r,g,b (donc une liste de longueur 3).
+    threshold : int
+        Threshold pour la limite du blanc.
+    dist : int
+        Distance pour la limite du blanc.
+        
+    Retours
+    ----------
+    bool
+        Renvoie un booléen : 1 si le pixel est blanc, 0 sinon.
+    """
+    r,g,b = pixel
+    if (r>threshold)& (g>threshold)& (b>threshold)& (np.abs(r-g)<dist)& (np.abs(r-b)<dist)& (np.abs(g-b)<dist) : 
+      return True
+    else :
+      return False
+
+    
+    
+def white_percentage(img_jpg,threshold=245, dist=5) :
+    """Donne le pourcentage de pixels blanc (selon une certaine notion de distance et un certain threshold) d'une image.
+    
+    Paramètres
+    ----------
+    img_jpg : Image
+        Image d'entrée au format RGB.
+    threshold : int
+        Threshold pour la limite du blanc.
+    dist : int
+        Distance pour la limite du blanc.
+        
+    Retours
+    ----------
+    float
+        Renvoie le pourcentage de blanc de l'image d'entrée.
+    """
+    img_arr = img_to_array(img_jpg)
+    compteur = 0
+    n = len(img_arr)
+    m = len(img_arr[0])
+    taille_img = n*m
+    for i in range(n) :
+        for j in range(m) :
+            pixel = img_arr[i,j,:]
+            ij_is_white = is_white(pixel,threshold,dist) #booléen
+            if ij_is_white == 1 :
+                compteur +=1
+    return compteur/taille_img*100
+
+  
+  
+
+def white_to_grey(img_jpg,threshold=245, dist=5):
+    """Transforme tous les pixel considérés comme blancs (selon une certaine notion de distance et un certain threshold) en pixels gris.
+    
+    Paramètres
+    ----------
+    img_jpg : Image
+        Image d'entrée au format RGB.
+    threshold : int
+        Threshold pour la limite du blanc.
+    dist : int
+        Distance pour la limite du blanc.
+        
+    Retours
+    ----------
+    Image
+        Renvoie l'image d'entrée dont le blanc est converti en gris.
+    """
+    img_arr= img_to_array(img_jpg)
+    n = len(img_arr)
+    m = len(img_arr[0])
+    img_corrigee_arr = np.zeros([n,m,3])
+    for i in range(n) :
+        for j in range(m) :
+            pixel= img_arr[i,j,:]
+            if is_white(pixel, threshold, dist) ==1 :
+                pixel = [125.,125.,125.]
+            img_corrigee_arr[i,j,:]= pixel
+        img_corrigee = array_to_img(img_corrigee_arr)
+    return img_corrigee
+
+  
+  
+def is_white_background(img_jpg,threshold=245, dist=5, percentage=30) :
+    """Détermine si le fond d'une image est blanc ou non.
+    
+    Paramètres
+    ----------
+    img_jpg : Image
+        Image d'entrée au format RGB.
+    threshold : int
+        Threshold pour la limite du blanc.
+    dist : int
+        Distance pour la limite du blanc.
+    percentage : int
+        Pourcentage de blanc de l'image à partir duquel on considère que l'image est effectivement sur fond blanc.
+        
+    Retours
+    ----------
+    bool
+        Renvoie un booléen : 1 si le fond est blanc, 0 sinon.
+    """
+    return white_percentage(img_jpg,threshold=245, dist=5) > percentage
+    
+    
+    
+    
+def is_human_model(path, limit_percent=95) :
+    """Détermine si un vêtement est porté par un humain ou non.
+    
+    Paramètres
+    ----------
+    path : str
+        Le chemin d'une photo.
+    limit_percentage : int
+        Pourcentage minimal à partir duquel on considère que le sujet de la photo est humain.
+    
+    Retours
+    ----------
+    list
+        Retourne une liste dont le premier argument est un booléen : True si le vêtement est porté par un modèle humain, False sinon ; le second argument est le pourcentage de certitude de l'algorithme.
+    """
+    detectedImage, detections = detector.detectObjectsFromImage(output_type="array", input_image=path, minimum_percentage_probability=0)
+    convertedImage = cv2.cvtColor(detectedImage, cv2.COLOR_RGB2BGR)
+    max_percent = max([detections[i]['percentage_probability'] for i in range(len(detections))]) #plusieurs objets peuvent être détectés 
+    if max_percent > limit_percent :
+        return(True, max_percent)
+    else :
+        return(False, max_percent)
+    
+    
+    
+def is_human_model_feedback(path, limit_percent=95) :
+    """Fonction is_human_model enrichie d'un retour à l'utilisateur. Imprime les résultats à chaque étape.        
+    Détermine si un vêtement est porté par un humain ou non.
+    
+    Paramètres
+    ----------
+    path : str
+        Le chemin d'une photo.
+    limit_percentage : int
+        Pourcentage minimal à partir duquel on considère que le sujet de la photo est humain.
+    
+    Retours
+    ----------
+    list
+        Retourne une liste dont le premier argument est un booléen : True si le vêtement est porté par un modèle humain, False sinon ; le second argument est le pourcentage de certitude de l'algorithme.
+    """
+    detectedImage, detections = detector.detectObjectsFromImage(output_type="array", input_image=path, minimum_percentage_probability=0)
+    convertedImage = cv2.cvtColor(detectedImage, cv2.COLOR_RGB2BGR)
+
+    img2 = convertedImage[:,:,::-1]
+    plt.imshow(img2)
+    plt.show()
+    
+    max_percent = max([detections[i]['percentage_probability'] for i in range(len(detections))]) #plusieurs objets peuvent être détectés 
+    if max_percent > limit_percent :
+        return(True, max_percent)
+    else :
+        return(False, max_percent)
+       
+
+   
