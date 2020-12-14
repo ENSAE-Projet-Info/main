@@ -679,8 +679,8 @@ def percentage_true_feedback(data_img, bool_function_feedback) :
     ----------
     data_img : list
         Liste d'images, au format RGB.
-    bool_function : function
-        Fonction booléenne, prenant en entrée une image et renvoyant True ou False.
+    bool_function_feedback : function
+        Fonction qui prend en entrée une image et renvoie une liste d'un booléen et d'un score, et qui dans son exécution imprime un feedback pour l'utilisateur.
     
     Retours
     ----------
