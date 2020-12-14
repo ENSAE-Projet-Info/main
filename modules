@@ -1,12 +1,16 @@
-!pip install opencv-contrib-python
-!pip install webcolors==1.3
+#requierements for descriptive statistics analysis
 
-import pandas as pd
-import seaborn as sns
-import numpy as np
-import scipy
-import matplotlib.pyplot as plt
-import os
-import cv2 as cv
-from PIL import Image
-import webcolors
+webcolors==1.3
+opencv-contrib-python
+pandas
+seaborn
+numpy
+scipy
+matplotlib
+os
+cv2
+PIL
+
+#requierements for deep learning training
+
+fastai
