@@ -28,9 +28,6 @@ def scrap_garments(garment_classes,save_path,chromedriver_path):
         
     """
 
-
-
-
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless')
 
@@ -69,7 +66,7 @@ def scrap_garments(garment_classes,save_path,chromedriver_path):
                     except KeyError:
                         img_link = img['src']
 
-                    img_path = '/Users/zakariabekkar/Downloads/python_project_dataset/{}/{}'.format(garment,img_link[-22:-19]+img_link[-18:])
+                    img_path = '{}/{}/{}'.format(save_path,garment,img_link[-22:-19]+img_link[-18:])
 
                     urllib.request.urlretrieve(img_link,img_path)
                     print('Article Ddl Done !')
