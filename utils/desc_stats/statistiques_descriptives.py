@@ -22,12 +22,12 @@ def closest_colour(requested_colour):
     """Prend en entré un triplet (r,g,b) correspondant au RGB d'un pixel d'une image,
     et renvoie la couleur la plus proche associée (distance euclidienne)
     
-    Parameters
+    Paramètre
     ----------
-    arg1 : tuple
+    requested_colour : tuple
         Triplet RGB (r,g,b) d'un pixel
 
-    Returns
+    Retour
     -------
     str
         Couleur associé au pixel (choisi dans le dictionnaire colour_dict)
@@ -45,12 +45,12 @@ def closest_colour(requested_colour):
 def crop(image):
     """Prend en entrée une image au format PIL et renvoie la même image au même format, zoomée.
     
-    Parameters
+    Paramètre
     ----------
-    arg1 : PIL.JpegImagePlugin.JpegImageFile
+    image : PIL.JpegImagePlugin.JpegImageFile
         Image à zoomer
 
-    Returns
+    Retour
     -------
     PIL.JpegImagePlugin.JpegImageFile
         Image zoomée
@@ -69,12 +69,12 @@ def major_colour(image_matrix):
     """Prend en entrée un image RGB sous forme de matrice de dimension 3, calcule pour chaque pixel la couleur la plus proche
     (avec request_colour) et renvoie la couleur qui a le plus de pixel comptabilisés.
     
-    Parameters
+    Paramètre
     ----------
-    arg1 : numpy.ndarray
+    image_matrix : numpy.ndarray
         Array numpy de dimension 3 : contient le code RGB de chaque pixel de l'image.
 
-    Returns
+    Retour
     -------
     str
         Couleur majoritaire de l'image
@@ -105,15 +105,15 @@ def colour_repartition_mean(classe, percentage=1):
     Méthode "mean" : étant donné une image, calcule la couleur la plus proche (distance euclidienne)
     de la moyenne RGB de tous les pixels
     
-    Parameters
+    Paramètres
     ----------
-    arg1 : str
+    classe : str
         Nom de la classe (type d'habit) à analyser, au format str. Par exemple 'pull'
-    arg2 : float
+    percentage : float
         Pourcentage de la classe que l'on charge. Doit être très petit lorsque l'on veut voir comment le programme fonctionne,
         car ce dernier est très long. Vaut 1 par défaut
 
-    Returns
+    Retour
     -------
     dict
         Dictionnaire dont les clés sont les couleurs, et les valeurs le nombre d'image ayant la couleur associé à la clé.
@@ -150,15 +150,15 @@ def colour_repartition_major(classe, percentage=1):
     du type de vêtement avec la méthode "major".
     Méthode "major" : la couleur d'un vêtement est donné par la fonction "major_colour" 
     
-    Parameters
+    Paramètres
     ----------
-    arg1 : str
+    classe : str
         Nom de la classe (type d'habit) à analyser, au format str. Par exemple 'pull'
-    arg2 : float
+    percentage : float
         Pourcentage de la classe que l'on charge. Doit être très petit lorsque l'on veut voir comment le programme fonctionne,
         car ce dernier est très long. Vaut 1 par défaut
 
-    Returns
+    Retour
     -------
     dict
         Dictionnaire dont les clés sont les couleurs, et les valeurs le nombre d'image ayant la couleur associé à la clé.
@@ -193,14 +193,17 @@ def colour_repartition_cluster(classe, percentage = 1, ncluster =5):
     et renvoie la repartition de la couleur majoritaire pour chaque image du type de vêtement avec la méthode "cluster".
     Méthode cluster : Trouve la couleur majoritaire d'un vêtement avec la méthode des k-means
     
-    Parameters
+    Paramètres
     ----------
-    arg1 : str
+    classe : str
         Nom de la classe (type d'habit) à analyser, au format str. Par exemple 'pull'
-    arg2 : float
+    percentage : float
         Pourcentage de la classe que l'on charge. Doit être très petit lorsque l'on veut voir comment le programme fonctionne,
         car ce dernier est très long. Vaut 1 par défaut
-    Returns
+    ncluster : int
+        Nombre de clusters k-means. Vaut 5 par défaut
+        
+    Retour
     -------
     dict
         Dictionnaire dont les clés sont les couleurs, et les valeurs le nombre d'image ayant la couleur associé à la clé.
