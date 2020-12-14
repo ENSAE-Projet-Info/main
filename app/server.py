@@ -2,7 +2,7 @@ import aiohttp
 import asyncio
 import uvicorn
 from fastai.vision.all import *
-import torchvision.transforms as T
+from fastai.vision import *
 import PIL 
 from io import BytesIO
 from starlette.applications import Starlette
@@ -59,10 +59,10 @@ async def homepage(request):
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
     img_data = await request.form()
-    img_bytes = await (img_data['file'].read())
+    img_bytes = await (img_data['file'].read()) 
     img_pil = PIL.Image.open(BytesIO(img_bytes))
-    img_tensor = T.ToTensor()(img_pil)
-    pred = learn.predict(img_tensor)
+    img_fastai = open_image(img_pil)  
+    pred = learn.predict(img_fastai)
     prediction = pred[0]
     return JSONResponse({'result': str(prediction)})
 
