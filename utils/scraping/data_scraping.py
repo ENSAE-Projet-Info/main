@@ -10,24 +10,32 @@ import time
 
 
 
-def scrap_garments(array):
+def scrap_garments(garment_classes,save_path,chromedriver_path):
 
-    '''
-    Docstring : Function that performs the data scraping for inputed garment classes.
-    Saves the data in specified path ( add this feature)
+    """
+        Constructs all the necessary attributes for the person object.
+        Performs the data scraping for inputed garment classes.
+        Saves the data in specified path with a specific folder structure : each class data points in an eponym repertory.
 
-    '''
+        Parameters
+        ----------
+            garment_classes : arr
+                array containing garment classes to be web-scraped
+            save_path : str
+                save path for the web-scraped data
+            chromedriver_path : str
+                path for the local chromedriver/firefox executable
+        
+    """
 
-    garment_classes = array
 
 
-    CHROMEDRIVER_PATH = '/Users/zakariabekkar/chromedriver'
 
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless')
 
 
-    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH,options=chrome_options)
+    driver = webdriver.Chrome(executable_path=chromedriver_path,options=chrome_options)
 
 
     t1 = time.time()
