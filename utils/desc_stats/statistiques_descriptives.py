@@ -36,6 +36,7 @@ def first_stats():
         str_classe = list(str_to_var.keys())[list(str_to_var.values()).index(classe)]
         for i in range(len(classe)):
             size.append(os.path.getsize(path + '/' + str_classe + '/' + classe[i]))
+    plt.title('Distribution de la taille de chaque fichier du dataset')
     sns.distplot(size)
     print('Il y a {} pulls, {} t-shirt, {} pantalons et {} shorts dans la base de données.'.format(len(pull),
                                                                                                len(tshirt), 
