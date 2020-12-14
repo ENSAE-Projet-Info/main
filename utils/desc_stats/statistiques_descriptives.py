@@ -188,7 +188,7 @@ def colour_repartition_major(classe, percentage=1):
             pass
     return(colour_count)
 
-def colour_repartition_cluster(classe, percentage = 1 ncluster =5):
+def colour_repartition_cluster(classe, percentage = 1, ncluster =5):
     """Prend une entrée un type de vetement au format str, et un nombre de cluster (par défaut 5)
     et renvoie la repartition de la couleur majoritaire pour chaque image du type de vêtement avec la méthode "cluster".
     Méthode cluster : Trouve la couleur majoritaire d'un vêtement avec la méthode des k-means
