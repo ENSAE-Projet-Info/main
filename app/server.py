@@ -62,8 +62,7 @@ async def analyze(request):
     img_bytes = await (img_data['file'].read())
     img_pil = PIL.Image.open(BytesIO(img_bytes))
     img_tensor = T.ToTensor()(img_pil)
-    img_fastai = to_image(img_tensor)
-    pred = learn.predict(img_fastai)
+    pred = learn.predict(img_tensor)
     prediction = pred[0]
     return JSONResponse({'result': str(prediction)})
 
