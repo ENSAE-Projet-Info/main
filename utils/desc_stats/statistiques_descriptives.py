@@ -9,7 +9,7 @@ from PIL import Image
 import webcolors
 import random
 
-from vars import *
+from utils.desc_stats.vars import *
 
 def first_stats():
     """Indique le nombre de vêtements dans chaque classe ainsi que le pourcentage entre parenthèse, et qui trace un histogramme de la
@@ -26,9 +26,9 @@ def first_stats():
     """
     size = []
     for classe in ['pull', 'tshirt', 'pantalon', 'short']:
-        for i in range(len(classe)):
+        for i in range(len(vars()[classe])):
                 img = Image.open(path + '//' + classe + '/' + vars()[classe][i])
-                size.append(os.path.getsize(path + '/' + str_classe + '/' + classe[i]))
+                size.append(os.path.getsize(path + '/' + classe + '/' + vars()[classe][i]))
     plt.title('Distribution de la taille de chaque fichier du dataset')
     sns.distplot(size)
     print('Il y a {} pulls ({}%), {} t-shirt ({}%), {} pantalons ({}%) et {} shorts ({}%) dans la base de données.'.format(len(pull),
@@ -54,8 +54,8 @@ def two_random_images(classe):
         Deux images aléatoires de la classe "classe"
         
     """
-    image1 = Image.open(path + '//' + classe + '/' + vars()[classe][random.choice(range(len(vclasse)))])
-    image2 = Image.open(path + '//' + classe + '/' + vars()[classe][random.choice(range(len(vclasse)))])
+    image1 = Image.open(path + '//' + classe + '/' + vars()[classe][random.choice(range(len(vars()[classe])))])
+    image2 = Image.open(path + '//' + classe + '/' + vars()[classe][random.choice(range(len(vars()[classe])))])
     plt.imshow(image1)
     plt.show()
     plt.imshow(image2)
@@ -277,7 +277,7 @@ def colour_repartition_mean(classe, percentage=1):
               'Bleu': 0,
               'Violet': 0,
               'Rose': 0}
-    for i in range(percentage * len(vclasse)):
+    for i in range(percentage * len(vars()[classe])):
     #Importation de l'image en rgb
         img = Image.open(path + '//' + classe + '/' + vars()[classe][i])
         img_cropped = crop(img)
@@ -319,7 +319,7 @@ def colour_repartition_major(classe, percentage=1):
               'Bleu': 0,
               'Violet': 0,
               'Rose': 0}
-    for i in range(percentage * len(vclasse)):
+    for i in range(percentage * len(vars()[classe])):
     #Importation de l'image en rgb
         img = Image.open(path + '//' + classe + '/' + vars()[classe][i])
         img_cropped = crop(img)
@@ -363,7 +363,7 @@ def colour_repartition_cluster(classe, percentage = 1, ncluster =5):
               'Bleu': 0,
               'Violet': 0,
               'Rose': 0}
-    for i in range(percentage * len(vclasse)):
+    for i in range(percentage * len(vars()[classe])):
     #Importation de l'image en rgb
         img = Image.open(path + '//' + classe + '/' + vars()[classe][i])
         img_cropped = crop(img)
