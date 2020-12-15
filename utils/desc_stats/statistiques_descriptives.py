@@ -47,8 +47,32 @@ def first_stats():
                                                                                                round(len(pantalon)/len(pull+tshirt+pantalon+short) * 100,2),
                                                                                                len(short),
                                                                                                round(len(short)/len(pull+tshirt+pantalon+short) * 100,2)))
-  
 
+    
+def two_random_images(classe):
+    """Affiche deux images aléatoires de la classe "classe"
+    
+    Paramètre
+    ----------
+    classe : str
+        Classe de vêtements dont on veut afficher deux images
+    Retours
+    -------
+    None
+        Deux images aléatoires de la classe "classe"
+        
+    
+    """
+    vclasse = str_to_var[classe]
+    image1 = Image.open(path + '//' + classe + '/' + vclasse[random.choice(range(len(vclasse)))])
+    image2 = Image.open(path + '//' + classe + '/' + vclasse[random.choice(range(len(vclasse)))])
+    plt.imshow(image1)
+    plt.show()
+    plt.imshow(image2)
+    plt.show()
+
+    
+    
 def closest_colour(requested_colour):
     """Prend en entré un triplet (r,g,b) correspondant au RGB d'un pixel d'une image,
     et renvoie la couleur la plus proche associée (distance euclidienne)
