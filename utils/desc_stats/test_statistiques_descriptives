@@ -110,12 +110,12 @@ class Stats_Des_Test(unittest.TestCase):
     def test_is_human_model(self):
         """Test le fonctionnement de la fonction 'is_human_model'."""
 
-        self.assertIs(is_human_model(image),bool)
+        self.assertIs(is_human_model(path+'\pull/' + pull[0]),bool)
         
     def test_is_human_model_feedback(self): 
         """Test le fonctionnement de la fonction 'is_human_model_feedback'."""
 
-        self.assertIs(is_human_model_feedback(image)[0],bool)
+        self.assertIs(is_human_model_feedback(path+'\pull/' + pull[0])[0],bool)
         
     def test_percentage_true (self): 
         """Test le fonctionnement de la fonction 'percentage_true'."""
