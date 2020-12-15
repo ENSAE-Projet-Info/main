@@ -19,3 +19,8 @@ colour_dict = {'#FFFFFF' : 'Blanc',
               '#000061' : 'Bleu',
               '#800080' : 'Violet',
               '#ff00aa': 'Rose'} 
+
+str_to_var = {'pull': pull,
+              'pantalon' : pantalon,
+              'tshirt' : tshirt,
+              'short' : short}
