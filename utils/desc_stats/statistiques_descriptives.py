@@ -11,6 +11,26 @@ import random
 
 from utils.desc_stats.vars import *
 
+colour_dict = {'#FFFFFF' : 'Blanc',
+              '#000000' : 'Noir',
+              '#C0C0C0' : 'Gris',
+              '#FF0000': 'Rouge',
+              '#800000': 'Marron',
+              '#FFFF00': 'Jaune',
+              '#008000': 'Vert',
+              '#00FFFF' : 'Cyan',
+              '#0000FF' : 'Bleu',
+              '#000061' : 'Bleu',
+              '#800080' : 'Violet',
+              '#ff00aa': 'Rose'}
+
+
+str_to_var = {'pull': pull,
+              'pantalon' : pantalon,
+              'tshirt' : tshirt,
+              'short' : short}
+    
+    
 def first_stats():
     """Indique le nombre de vêtements dans chaque classe ainsi que le pourcentage entre parenthèse, et qui trace un histogramme de la
     taille de chaque fichier
@@ -25,10 +45,10 @@ def first_stats():
     
     """
     size = []
-    for classe in ['pull', 'tshirt', 'pantalon', 'short']:
-        for i in range(len(vars()[classe])):
-                img = Image.open(path + '//' + classe + '/' + vars()[classe][i])
-                size.append(os.path.getsize(path + '/' + classe + '/' + vars()[classe][i]))
+    for classe in [pull, tshirt, pantalon, short]:
+        str_classe = list(str_to_var.keys())[list(str_to_var.values()).index(classe)]
+        for i in range(len(classe)):
+            size.append(os.path.getsize(path + '/' + str_classe + '/' + classe[i]))
     plt.title('Distribution de la taille de chaque fichier du dataset')
     sns.distplot(size)
     print('Il y a {} pulls ({}%), {} t-shirt ({}%), {} pantalons ({}%) et {} shorts ({}%) dans la base de données.'.format(len(pull),
@@ -53,9 +73,11 @@ def two_random_images(classe):
     None
         Deux images aléatoires de la classe "classe"
         
+    
     """
-    image1 = Image.open(path + '//' + classe + '/' + vars()[classe][random.choice(range(len(vars()[classe])))])
-    image2 = Image.open(path + '//' + classe + '/' + vars()[classe][random.choice(range(len(vars()[classe])))])
+    vclasse = str_to_var[classe]
+    image1 = Image.open(path + '//' + classe + '/' + vclasse[random.choice(range(len(vclasse)))])
+    image2 = Image.open(path + '//' + classe + '/' + vclasse[random.choice(range(len(vclasse)))])
     plt.imshow(image1)
     plt.show()
     plt.imshow(image2)
@@ -93,7 +115,7 @@ def pie_chart_categories() :
     plt.tight_layout()
     plt.show()
 
-def pie_chart_fond_blanc (path=path) :
+def pie_chart_fond_blanc () :
     """Affiche le pie chart de la distribution des images sur fond blanc (avec les paramètres pré-calculés).
     
     Paramètres
@@ -159,7 +181,7 @@ def pie_chart_human_model () :
     """
     import matplotlib.pyplot as plt
     labels = ['Humain', 'Non-humain']
-    sizes = [65.02, 100-65.02]
+    sizes = [64.01, 100-64.01]
     explode = (0.1, 0)
     colors = ['AquaMarine','Khaki']
     fig1, ax1 = plt.subplots()
@@ -277,9 +299,10 @@ def colour_repartition_mean(classe, percentage=1):
               'Bleu': 0,
               'Violet': 0,
               'Rose': 0}
-    for i in range(percentage * len(vars()[classe])):
+    vclasse = str_to_var[classe]
+    for i in range(percentage * len(vclasse)):
     #Importation de l'image en rgb
-        img = Image.open(path + '//' + classe + '/' + vars()[classe][i])
+        img = Image.open(path + '//' + classe + '/' + vclasse[i])
         img_cropped = crop(img)
     
         M = np.array(img_cropped)
@@ -319,9 +342,10 @@ def colour_repartition_major(classe, percentage=1):
               'Bleu': 0,
               'Violet': 0,
               'Rose': 0}
-    for i in range(percentage * len(vars()[classe])):
+    vclasse = str_to_var[classe]
+    for i in range(percentage * len(vclasse)):
     #Importation de l'image en rgb
-        img = Image.open(path + '//' + classe + '/' + vars()[classe][i])
+        img = Image.open(path + '//' + classe + '/' + vclasse[i])
         img_cropped = crop(img)
     
         M = np.array(img_cropped)
@@ -363,9 +387,10 @@ def colour_repartition_cluster(classe, percentage = 1, ncluster =5):
               'Bleu': 0,
               'Violet': 0,
               'Rose': 0}
-    for i in range(percentage * len(vars()[classe])):
+    vclasse = str_to_var[classe]
+    for i in range(percentage * len(vclasse)):
     #Importation de l'image en rgb
-        img = Image.open(path + '//' + classe + '/' + vars()[classe][i])
+        img = Image.open(path + '//' + classe + '/' + vclasse[i])
         img_cropped = crop(img)
     
         #Test si l'image est en noir et blanc
