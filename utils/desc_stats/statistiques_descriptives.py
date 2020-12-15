@@ -11,25 +11,6 @@ import random
 
 from utils.desc_stats.vars import *
 
-colour_dict = {'#FFFFFF' : 'Blanc',
-              '#000000' : 'Noir',
-              '#C0C0C0' : 'Gris',
-              '#FF0000': 'Rouge',
-              '#800000': 'Marron',
-              '#FFFF00': 'Jaune',
-              '#008000': 'Vert',
-              '#00FFFF' : 'Cyan',
-              '#0000FF' : 'Bleu',
-              '#000061' : 'Bleu',
-              '#800080' : 'Violet',
-              '#ff00aa': 'Rose'}
-
-
-str_to_var = {'pull': pull,
-              'pantalon' : pantalon,
-              'tshirt' : tshirt,
-              'short' : short}
-    
     
 def first_stats():
     """Indique le nombre de vêtements dans chaque classe ainsi que le pourcentage entre parenthèse, et qui trace un histogramme de la
