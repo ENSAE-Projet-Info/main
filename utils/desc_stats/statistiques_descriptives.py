@@ -411,11 +411,12 @@ def is_logo(img_jpg):
     img_zoom = array_to_img(img_arr_zoom)
 
     img_var = colour_var(img_zoom) #image des variances
-    score0 = img_var[:,:,0].sum() #somme des variances
-    score1 = img_var[:,:,1].sum()
-    score2 = img_var[:,:,2].sum()
+    img_var_arr = img_to_array(img_var)
+    score0 = img_var_arr[:,:,0].sum() #somme des variances
+    score1 = img_var_arr[:,:,1].sum()
+    score2 = img_var_arr[:,:,2].sum()
     score = log(score0 + score1 + score2) #Logarithme pour "aplatir" les scores, qui sont immenses et peu commodes à comparer.        
-    if score>12.6 :
+    if score>12.55 :
         return 1
     else :
         return 0
@@ -464,9 +465,11 @@ def is_logo_feedback(img_jpg):
     score2 = img_var_arr[:,:,2].sum()
     score = log(score0 + score1 + score2) #Logarithme pour "aplatir" les scores, qui sont immenses et peu commodes à comparer.
     
+    plt.imshow(img_jpg)
+    plt.show()
     plt.imshow(img_var)
     plt.show()
-    if score>12.6 :
+    if score>12.55 :
         print("LOGO. Score :",score)
         return (1,score)
     else :
@@ -580,7 +583,7 @@ def is_white_background(img_jpg,threshold=245, dist=5, percentage=30) :
     dist : int
         Distance pour la limite du blanc.
     percentage : int
-        Pourcentage de blanc sur l'image à partir duquel on considère que l'image est effectivement sur fond blanc.
+        Pourcentage de blanc de l'image à partir duquel on considère que l'image est effectivement sur fond blanc.
         
     Retours
     ----------
@@ -605,14 +608,14 @@ def is_white_background_feedback(img_jpg,threshold=245, dist=5, percentage=30) :
     dist : int
         Distance pour la limite du blanc.
     percentage : int
-        Pourcentage de blanc sur l'image à partir duquel on considère que l'image est effectivement à fond blanc.
+        Pourcentage de blanc de l'image à partir duquel on considère que l'image est effectivement sur fond blanc.
         
     Retours
     ----------
     bool
         Renvoie un booléen : 1 si le fond est blanc, 0 sinon.
     float
-        Pourcentage de pixels blancs sur la photo.
+        Pourcentage de pixels blancs de la photo.
     """
     plt.imshow(img_jpg)
     plt.show()
@@ -644,13 +647,16 @@ def is_human_model(path, limit_percent=95) :
     list
         Retourne une liste dont le premier argument est un booléen : True si le vêtement est porté par un modèle humain, False sinon ; le second argument est le pourcentage de certitude de l'algorithme.
     """
-    detectedImage, detections = detector.detectObjectsFromImage(output_type="array", input_image=path, minimum_percentage_probability=0)
+    detectedImage, detections = detector.detectObjectsFromImage(output_type="array",input_image=path,minimum_percentage_probability =-1)
     convertedImage = cv2.cvtColor(detectedImage, cv2.COLOR_RGB2BGR)
+    
+    if detections ==[] :
+        return (False)
     max_percent = max([detections[i]['percentage_probability'] for i in range(len(detections))]) #plusieurs objets peuvent être détectés 
     if max_percent > limit_percent :
-        return(True, max_percent)
+        return(True)
     else :
-        return(False, max_percent)
+        return(False)
 
     
     
@@ -673,13 +679,16 @@ def is_human_model_feedback(path, limit_percent=95) :
     float
         Pourcentage de certitude avec lequel l'algorithme estime que l'image en question contient un humain.
     """
-    detectedImage, detections = detector.detectObjectsFromImage(output_type="array", input_image=path, minimum_percentage_probability=0)
+   
+    detectedImage, detections = detector.detectObjectsFromImage(output_type="array",input_image=path,minimum_percentage_probability =-1)
     convertedImage = cv2.cvtColor(detectedImage, cv2.COLOR_RGB2BGR)
 
     img2 = convertedImage[:,:,::-1]
     plt.imshow(img2)
     plt.show()
-    
+    if detections ==[] :
+        print("NON-HUMAIN. Pourcentage obtenu par l'algorithme :   < 50%")
+        return (False, "< 50 %")    
     max_percent = max([detections[i]['percentage_probability'] for i in range(len(detections))]) #plusieurs objets peuvent être détectés 
     if max_percent > limit_percent :
         print("HUMAIN. Pourcentage obtenu par l'algorithme : ", max_percent)
@@ -703,7 +712,7 @@ def percentage_true(data_img, bool_function) :
     Retours
     ----------
     float
-        Pourcentage d'images renvoyant la valeur True lorsqu'on leur applique la fonction booléenne.
+        Pourcentage d'image renvoyant la valeur True lorsqu'on leur applique la fonction booléenne.
     """
     n = len(data_img)
     compteur = 0
@@ -714,9 +723,9 @@ def percentage_true(data_img, bool_function) :
         compteur += bool_function(img_jpg)
         compteur_progression+=1
         compteur_progression2+=1
-        if  compteur_progression2 ==100 :  
-            print("{} images. Nous en sommes à : {} %".format(compteur_img,round(compteur_img/k * 100,2))) # permet de garder une trace sur le nombre d'images qui ont été traitées pendant l'exécution de l'algorithme, qui peut être très longue...
-            compteur_img2=0 
+        if  compteur_progression2 ==200 :  
+            print("{} images. Nous en sommes à : {} %".format(compteur_progression,round(compteur_progression/n * 100,2)), "d'avancement.") # permet de garder une trace sur le nombre d'images qui ont été traitées pendant l'exécution de l'algorithme, qui peut être très longue...
+            compteur_progression2=0 
     return compteur/n * 100
 
 
@@ -736,7 +745,7 @@ def percentage_true_feedback(data_img, bool_function_feedback) :
     Retours
     ----------
     float
-        Pourcentage d'images renvoyant la valeur True lorsqu'on leur applique la fonction booléenne.
+        Pourcentage d'image renvoyant la valeur True lorsqu'on leur applique la fonction booléenne.
     """
     n = len(data_img)
     compteur = 0
@@ -748,7 +757,7 @@ def percentage_true_feedback(data_img, bool_function_feedback) :
         compteur += bool_and_feedback[0]
         compteur_progression+=1
         compteur_progression2+=1
-        if  compteur_progression2 ==100 :  
-            print("{} images. Nous en sommes à : {} %".format(compteur_img,round(compteur_img/k * 100,2))) # permet de garder une trace sur le nombre d'images qui ont été traitées pendant l'exécution de l'algorithme, qui peut être très longue...
-            compteur_img2=0            
+        if  compteur_progression2 ==200 :  
+            print("{} images. Nous en sommes à : {} %".format(compteur_progression,round(compteur_progression/n * 100,2)), "d'avancement.") # permet de garder une trace sur le nombre d'images qui ont été traitées pendant l'exécution de l'algorithme, qui peut être très longue...
+            compteur_progression2=0            
     return compteur/n * 100
