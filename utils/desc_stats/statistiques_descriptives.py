@@ -9,23 +9,9 @@ from PIL import Image
 import webcolors
 import random
 
-path = "utils/data/python_project_dataset"
+from vars import *
 
-
-colour_dict = {'#FFFFFF' : 'Blanc',
-              '#000000' : 'Noir',
-              '#C0C0C0' : 'Gris',
-              '#FF0000': 'Rouge',
-              '#800000': 'Marron',
-              '#FFFF00': 'Jaune',
-              '#008000': 'Vert',
-              '#00FFFF' : 'Cyan',
-              '#0000FF' : 'Bleu',
-              '#000061' : 'Bleu',
-              '#800080' : 'Violet',
-              '#ff00aa': 'Rose'}
-    
-def first_stats(path=path):
+def first_stats():
     """Indique le nombre de vêtements dans chaque classe ainsi que le pourcentage entre parenthèse, et qui trace un histogramme de la
     taille de chaque fichier
     
@@ -55,7 +41,7 @@ def first_stats(path=path):
                                                                                                round(len(short)/len(pull+tshirt+pantalon+short) * 100,2)))
 
     
-def two_random_images(classe, path=path):
+def two_random_images(classe):
     """Affiche deux images aléatoires de la classe "classe"
     
     Paramètre
