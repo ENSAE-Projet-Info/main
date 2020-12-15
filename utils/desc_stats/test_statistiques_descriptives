@@ -1,5 +1,3 @@
-import unittest
-
 class Stats_Des_Test(unittest.TestCase):
 
     """Test case utilisé pour tester les fonctions du module 'Statistiques_Descriptives'."""
