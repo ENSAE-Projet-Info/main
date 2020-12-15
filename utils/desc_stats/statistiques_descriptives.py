@@ -17,8 +17,9 @@ str_to_var = {'pull': pull,
               'tshirt' : tshirt,
               'short' : short}
     
+    
 def first_stats():
-    """Fonction qui indique le nombre de vêtements dans chaque classe et qui trace un histogramme de la
+    """Indique le nombre de vêtements dans chaque classe ainsi que le pourcentage entre parenthèse, et qui trace un histogramme de la
     taille de chaque fichier
     
     Paramètre
@@ -38,12 +39,40 @@ def first_stats():
             size.append(os.path.getsize(path + '/' + str_classe + '/' + classe[i]))
     plt.title('Distribution de la taille de chaque fichier du dataset')
     sns.distplot(size)
-    print('Il y a {} pulls, {} t-shirt, {} pantalons et {} shorts dans la base de données.'.format(len(pull),
-                                                                                               len(tshirt), 
+    print('Il y a {} pulls ({}%), {} t-shirt ({}%), {} pantalons ({}%) et {} shorts ({}%) dans la base de données.'.format(len(pull),
+                                                                                               round(len(pull)/len(pull+tshirt+pantalon+short) * 100,2),
+                                                                                               len(tshirt),
+                                                                                               round(len(tshirt)/len(pull+tshirt+pantalon+short) * 100,2),
                                                                                                len(pantalon),
-                                                                                               len(short)))
-  
+                                                                                               round(len(pantalon)/len(pull+tshirt+pantalon+short) * 100,2),
+                                                                                               len(short),
+                                                                                               round(len(short)/len(pull+tshirt+pantalon+short) * 100,2)))
 
+    
+def two_random_images(classe):
+    """Affiche deux images aléatoires de la classe "classe"
+    
+    Paramètre
+    ----------
+    classe : str
+        Classe de vêtements dont on veut afficher deux images
+    Retours
+    -------
+    None
+        Deux images aléatoires de la classe "classe"
+        
+    
+    """
+    vclasse = str_to_var[classe]
+    image1 = Image.open(path + '//' + classe + '/' + vclasse[random.choice(range(len(vclasse)))])
+    image2 = Image.open(path + '//' + classe + '/' + vclasse[random.choice(range(len(vclasse)))])
+    plt.imshow(image1)
+    plt.show()
+    plt.imshow(image2)
+    plt.show()
+
+    
+    
 def closest_colour(requested_colour):
     """Prend en entré un triplet (r,g,b) correspondant au RGB d'un pixel d'une image,
     et renvoie la couleur la plus proche associée (distance euclidienne)
@@ -159,7 +188,7 @@ def colour_repartition_mean(classe, percentage=1):
     vclasse = str_to_var[classe]
     for i in range(percentage * len(vclasse)):
     #Importation de l'image en rgb
-        img = Image.open(path + '\\' + classe + '/' + vclasse[i])
+        img = Image.open(path + '//' + classe + '/' + vclasse[i])
         img_cropped = crop(img)
     
         M = np.array(img_cropped)
@@ -203,7 +232,7 @@ def colour_repartition_major(classe, percentage=1):
     vclasse = str_to_var[classe]
     for i in range(percentage * len(vclasse)):
     #Importation de l'image en rgb
-        img = Image.open(path + '\\' + classe + '/' + vclasse[i])
+        img = Image.open(path + '//' + classe + '/' + vclasse[i])
         img_cropped = crop(img)
     
         M = np.array(img_cropped)
@@ -248,7 +277,7 @@ def colour_repartition_cluster(classe, percentage = 1, ncluster =5):
     vclasse = str_to_var[classe]
     for i in range(percentage * len(vclasse)):
     #Importation de l'image en rgb
-        img = Image.open(path + '\\' + classe + '/' + vclasse[i])
+        img = Image.open(path + '//' + classe + '/' + vclasse[i])
         img_cropped = crop(img)
     
         #Test si l'image est en noir et blanc
