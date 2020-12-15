@@ -281,7 +281,7 @@ def colour_repartition_mean(classe, percentage=1):
               'Violet': 0,
               'Rose': 0}
     vclasse = str_to_var[classe]
-    for i in range(percentage * len(vclasse)):
+    for i in range(int(percentage * len(vclasse))):
     #Importation de l'image en rgb
         img = Image.open(path + '//' + classe + '/' + vclasse[i])
         img_cropped = crop(img)
@@ -324,7 +324,7 @@ def colour_repartition_major(classe, percentage=1):
               'Violet': 0,
               'Rose': 0}
     vclasse = str_to_var[classe]
-    for i in range(percentage * len(vclasse)):
+    for i in range(int(percentage * len(vclasse))):
     #Importation de l'image en rgb
         img = Image.open(path + '//' + classe + '/' + vclasse[i])
         img_cropped = crop(img)
@@ -369,7 +369,7 @@ def colour_repartition_cluster(classe, percentage = 1, ncluster =5):
               'Violet': 0,
               'Rose': 0}
     vclasse = str_to_var[classe]
-    for i in range(percentage * len(vclasse)):
+    for i in range(int(percentage * len(vclasse))):
     #Importation de l'image en rgb
         img = Image.open(path + '//' + classe + '/' + vclasse[i])
         img_cropped = crop(img)
