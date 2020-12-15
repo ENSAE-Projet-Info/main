@@ -58,3 +58,77 @@ class Stats_Des_Test(unittest.TestCase):
         self.assertIs(major_colour_major('pull', 0.01), dict)
         self.assertIs(major_colour_major('pull', 0.01).values(), int)
         self.assertEqual(major_colour_major('pull', 0.01).keys(),colour_dict.values())
+
+    def test_colour_mean(self):
+        """Test le fonctionnement de la fonction 'colour_mean'."""
+
+        self.assertIs(colour_mean(image),PIL.Image.Image)
+        
+    def test_colour_var(self):
+        """Test le fonctionnement de la fonction 'colour_var'."""
+
+        self.assertIs(colour_var(image),PIL.Image.Image)
+
+
+    def test_is_logo(self):
+        """Test le fonctionnement de la fonction 'is_logo'."""
+
+        self.assertIs(is_logo(image),bool)
+
+    def test_is_logo_feedback(self): 
+        """Test le fonctionnement de la fonction 'is_logo_feedback'."""
+
+        self.assertIs(is_logo_feedback(image)[0],bool)
+        self.assertIs(is_logo_feedback(image)[1],float)
+        
+    def test_is_white(self):
+        """Test le fonctionnement de la fonction 'is_white'."""
+
+        self.assertIs(is_white(image[0,0,:]),bool)
+        
+    def test_white_percentage(self):
+        """Test le fonctionnement de la fonction 'white_percentage'."""
+
+        self.assertIs(is_white(image),float)
+        
+    def test_white_to_grey(self):
+        """Test le fonctionnement de la fonction 'white_to_grey'."""
+
+        self.assertIs(white_to_grey(image),PIL.Image.Image)
+
+    def test_is_white_background(self):
+        """Test le fonctionnement de la fonction 'is_white_background'."""
+
+        self.assertIs(is_white_background(image),bool)
+        
+    def test_is_white_background_feedback(self):
+        """Test le fonctionnement de la fonction 'is_white_background_feedback'."""
+
+        self.assertIs(is_white_background_feedback(image)[0],bool)
+        self.assertIs(is_white_background_feedback(image)[1],float)
+        
+    def test_is_human_model(self):
+        """Test le fonctionnement de la fonction 'is_human_model'."""
+
+        self.assertIs(is_human_model(image),bool)
+        
+    def test_is_human_model_feedback(self): 
+        """Test le fonctionnement de la fonction 'is_human_model_feedback'."""
+
+        self.assertIs(is_human_model_feedback(image)[0],bool)
+        
+    def test_percentage_true (self): 
+        """Test le fonctionnement de la fonction 'percentage_true'."""
+
+        self.assertIs(percentage_true(image),float)
+        
+    def test_percentage_true (self): 
+        """Test le fonctionnement de la fonction 'percentage_true'."""
+
+        self.assertIs(percentage_true([image],is_white_background),float)
+        
+    def test_percentage_true_feedback (self): 
+        """Test le fonctionnement de la fonction 'percentage_true_feedback'."""
+
+        self.assertIs(percentage_true_feedback([image],is_white_background_feedback),float)   
+        
