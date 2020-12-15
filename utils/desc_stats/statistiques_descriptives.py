@@ -1,3 +1,16 @@
+import pandas as pd
+import seaborn as sns
+import numpy as np
+import scipy
+import matplotlib.pyplot as plt
+import os
+import cv2 as cv
+from PIL import Image as I
+import webcolors
+import random
+
+
+
 colour_dict = {'#FFFFFF' : 'Blanc',
               '#000000' : 'Noir',
               '#C0C0C0' : 'Gris',
@@ -10,13 +23,6 @@ colour_dict = {'#FFFFFF' : 'Blanc',
               '#000061' : 'Bleu',
               '#800080' : 'Violet',
               '#ff00aa': 'Rose'}
-
-
-str_to_var = {'pull': pull,
-              'pantalon' : pantalon,
-              'tshirt' : tshirt,
-              'short' : short}
-    
     
 def first_stats():
     """Indique le nombre de vêtements dans chaque classe ainsi que le pourcentage entre parenthèse, et qui trace un histogramme de la
@@ -25,7 +31,6 @@ def first_stats():
     Paramètre
     ----------
     None
-
     Retours
     -------
     None
@@ -33,10 +38,10 @@ def first_stats():
     
     """
     size = []
-    for classe in [pull, tshirt, pantalon, short]:
-        str_classe = list(str_to_var.keys())[list(str_to_var.values()).index(classe)]
+    for classe in ['pull', 'tshirt', 'pantalon', 'short']:
         for i in range(len(classe)):
-            size.append(os.path.getsize(path + '/' + str_classe + '/' + classe[i]))
+                img = Image.open(path + '//' + classe + '/' + vars()[classe][i])
+                size.append(os.path.getsize(path + '/' + str_classe + '/' + classe[i]))
     plt.title('Distribution de la taille de chaque fichier du dataset')
     sns.distplot(size)
     print('Il y a {} pulls ({}%), {} t-shirt ({}%), {} pantalons ({}%) et {} shorts ({}%) dans la base de données.'.format(len(pull),
@@ -61,11 +66,9 @@ def two_random_images(classe):
     None
         Deux images aléatoires de la classe "classe"
         
-    
     """
-    vclasse = str_to_var[classe]
-    image1 = Image.open(path + '//' + classe + '/' + vclasse[random.choice(range(len(vclasse)))])
-    image2 = Image.open(path + '//' + classe + '/' + vclasse[random.choice(range(len(vclasse)))])
+    image1 = Image.open(path + '//' + classe + '/' + vars()[classe][random.choice(range(len(vclasse)))])
+    image2 = Image.open(path + '//' + classe + '/' + vars()[classe][random.choice(range(len(vclasse)))])
     plt.imshow(image1)
     plt.show()
     plt.imshow(image2)
@@ -74,11 +77,9 @@ def two_random_images(classe):
 
 def pie_chart_categories() :
     """Affiche le pie chart de la distribution des catégories de vêtements (avec les paramètres pré-calculés).
-
     Paramètres
     ----------
     None
-
     Retours
     -------
     None
@@ -171,7 +172,7 @@ def pie_chart_human_model () :
     """
     import matplotlib.pyplot as plt
     labels = ['Humain', 'Non-humain']
-    sizes = [64.01, 100-64.01]
+    sizes = [65.02, 100-65.02]
     explode = (0.1, 0)
     colors = ['AquaMarine','Khaki']
     fig1, ax1 = plt.subplots()
@@ -189,7 +190,6 @@ def closest_colour(requested_colour):
     ----------
     requested_colour : tuple
         Triplet RGB (r,g,b) d'un pixel
-
     Retour
     -------
     str
@@ -212,7 +212,6 @@ def crop(image):
     ----------
     image : PIL.JpegImagePlugin.JpegImageFile
         Image à zoomer
-
     Retour
     -------
     PIL.JpegImagePlugin.JpegImageFile
@@ -236,7 +235,6 @@ def major_colour(image_matrix):
     ----------
     image_matrix : numpy.ndarray
         Array numpy de dimension 3 : contient le code RGB de chaque pixel de l'image.
-
     Retour
     -------
     str
@@ -275,7 +273,6 @@ def colour_repartition_mean(classe, percentage=1):
     percentage : float
         Pourcentage de la classe que l'on charge. Doit être très petit lorsque l'on veut voir comment le programme fonctionne,
         car ce dernier est très long. Vaut 1 par défaut
-
     Retour
     -------
     dict
@@ -293,10 +290,9 @@ def colour_repartition_mean(classe, percentage=1):
               'Bleu': 0,
               'Violet': 0,
               'Rose': 0}
-    vclasse = str_to_var[classe]
     for i in range(percentage * len(vclasse)):
     #Importation de l'image en rgb
-        img = Image.open(path + '//' + classe + '/' + vclasse[i])
+        img = Image.open(path + '//' + classe + '/' + vars()[classe][i])
         img_cropped = crop(img)
     
         M = np.array(img_cropped)
@@ -320,7 +316,6 @@ def colour_repartition_major(classe, percentage=1):
     percentage : float
         Pourcentage de la classe que l'on charge. Doit être très petit lorsque l'on veut voir comment le programme fonctionne,
         car ce dernier est très long. Vaut 1 par défaut
-
     Retour
     -------
     dict
@@ -337,10 +332,9 @@ def colour_repartition_major(classe, percentage=1):
               'Bleu': 0,
               'Violet': 0,
               'Rose': 0}
-    vclasse = str_to_var[classe]
     for i in range(percentage * len(vclasse)):
     #Importation de l'image en rgb
-        img = Image.open(path + '//' + classe + '/' + vclasse[i])
+        img = Image.open(path + '//' + classe + '/' + vars()[classe][i])
         img_cropped = crop(img)
     
         M = np.array(img_cropped)
@@ -382,10 +376,9 @@ def colour_repartition_cluster(classe, percentage = 1, ncluster =5):
               'Bleu': 0,
               'Violet': 0,
               'Rose': 0}
-    vclasse = str_to_var[classe]
     for i in range(percentage * len(vclasse)):
     #Importation de l'image en rgb
-        img = Image.open(path + '//' + classe + '/' + vclasse[i])
+        img = Image.open(path + '//' + classe + '/' + vars()[classe][i])
         img_cropped = crop(img)
     
         #Test si l'image est en noir et blanc
