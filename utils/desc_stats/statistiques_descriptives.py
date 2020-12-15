@@ -171,7 +171,7 @@ def pie_chart_human_model () :
     """
     import matplotlib.pyplot as plt
     labels = ['Humain', 'Non-humain']
-    sizes = [65.02, 100-65.02]
+    sizes = [64.01, 100-64.01]
     explode = (0.1, 0)
     colors = ['AquaMarine','Khaki']
     fig1, ax1 = plt.subplots()
