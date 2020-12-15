@@ -5,7 +5,7 @@ import scipy
 import matplotlib.pyplot as plt
 import os
 import cv2 as cv
-from PIL import Image as I
+from PIL import Image
 import webcolors
 import random
 
