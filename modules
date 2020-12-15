@@ -1,6 +1,7 @@
 #requierements for descriptive statistics analysis
 
 time
+unittest
 sys
 webcolors==1.3
 opencv-contrib-python
