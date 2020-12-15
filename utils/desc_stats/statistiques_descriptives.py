@@ -73,27 +73,113 @@ def two_random_images(classe):
     
 
 def pie_chart_categories() :
-  n_tshirt = len(tshirt)
-  n_pull = len(pull)
-  n_pantalon = len(pantalon)
-  n_short = len(short)
-  n_all = n_tshirt + n_pull + n_pantalon + n_short
-  pct_tshirt = n_tshirt/n_all
-  pct_pull = n_pull/n_all
-  pct_pantalon = n_pantalon/n_all
-  pct_short = n_short / n_all
-  labels = ['T-shirt','Pull', 'Pantalon', 'Short']
-  sizes = [60,20,10,10]
-  explode = (0.05, 0.05,0.05,0.05)
-  colors = ['Wheat','PowderBlue','LightPink','MediumAquaMarine']
-  fig1, ax1 = plt.subplots()
-  ax1.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%',shadow=True, startangle=90)# Equal aspect ratio ensures that pie is drawn as a circle
-  ax1.axis('equal')
-  plt.title("Répartition des catégories de vêtements", fontsize=16)
-  plt.tight_layout()
-  plt.show()
+    """Affiche le pie chart de la distribution des catégories de vêtements (avec les paramètres pré-calculés).
 
+    Paramètres
+    ----------
+    None
+
+    Retours
+    -------
+    None
+        Un pie chart de la distribution des catégories de vêtements
+ 
+    """
+    n_tshirt = len(tshirt)
+    n_pull = len(pull)
+    n_pantalon = len(pantalon)
+    n_short = len(short)
+    n_all = n_tshirt + n_pull + n_pantalon + n_short
+    pct_tshirt = n_tshirt/n_all
+    pct_pull = n_pull/n_all
+    pct_pantalon = n_pantalon/n_all
+    pct_short = n_short / n_all
+    labels = ['T-shirt','Pull', 'Pantalon', 'Short']
+    sizes = [60,20,10,10]
+    explode = (0.05, 0.05,0.05,0.05)
+    colors = ['Wheat','PowderBlue','LightPink','MediumAquaMarine']
+    fig1, ax1 = plt.subplots()
+    ax1.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%',shadow=True, startangle=90)# Equal aspect ratio ensures that pie is drawn as a circle
+    ax1.axis('equal')
+    plt.title("Répartition des catégories de vêtements", fontsize=16)
+    plt.tight_layout()
+    plt.show()
+
+def pie_chart_fond_blanc () :
+    """Affiche le pie chart de la distribution des images sur fond blanc (avec les paramètres pré-calculés).
     
+    Paramètres
+    ----------
+    None
+    
+    Retours
+    -------
+    None
+        Un pie chart de la distribution des images sur fond blanc
+ 
+    """
+    import matplotlib.pyplot as plt
+    labels = ['Fond Blanc', 'Reste']
+    sizes = [86, 14]
+    explode = (0.1, 0)
+    colors = ['Lavender','#66b3ff']
+    fig1, ax1 = plt.subplots()
+    ax1.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%',shadow=True, startangle=90)# Equal aspect ratio ensures that pie is drawn as a circle
+    ax1.axis('equal')
+    plt.title("Répartition des fonds de photos", fontsize=16)
+    plt.tight_layout()
+    plt.show()
+    
+def pie_chart_logo () :
+    """Affiche le pie chart de la distribution des T-shirts à logos (avec les paramètres pré-calculés).
+    
+    Paramètre
+    ----------
+    None
+    
+    Retours
+    -------
+    None
+        Un pie chart de la distribution des T-shirts à logo
+ 
+    """
+    import matplotlib.pyplot as plt
+    # Pie chart
+    labels = ['Logo', 'Unicolore']
+    sizes = [65.02, 100-65.02]
+    explode = (0.1, 0)
+    colors = ['Coral','LightPink']
+    fig1, ax1 = plt.subplots()
+    ax1.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%',shadow=True, startangle=90)# Equal aspect ratio ensures that pie is drawn as a circle
+    ax1.axis('equal')
+    plt.title("Répartition des types de T-shirts", fontsize=16)
+    plt.tight_layout()
+    plt.show()
+
+def pie_chart_human_model () :
+    """Affiche le pie chart de la distribution des vêtements portés par des humains (avec les paramètres pré-calculés).
+    
+    Paramètre
+    ----------
+    None
+    
+    Retours
+    -------
+    None
+        Un pie chart de la distribution des vêtements portés par des humains
+ 
+    """
+    import matplotlib.pyplot as plt
+    labels = ['Humain', 'Non-humain']
+    sizes = [65.02, 100-65.02]
+    explode = (0.1, 0)
+    colors = ['AquaMarine','Khaki']
+    fig1, ax1 = plt.subplots()
+    ax1.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%',shadow=True, startangle=90)# Equal aspect ratio ensures that pie is drawn as a circle
+    ax1.axis('equal')
+    plt.title("Distribution des habits portés par des modèles humains", fontsize=16)
+    plt.tight_layout()
+    plt.show()
     
 def closest_colour(requested_colour):
     """Prend en entré un triplet (r,g,b) correspondant au RGB d'un pixel d'une image,
