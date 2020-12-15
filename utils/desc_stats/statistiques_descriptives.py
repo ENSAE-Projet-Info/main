@@ -70,6 +70,28 @@ def two_random_images(classe):
     plt.show()
     plt.imshow(image2)
     plt.show()
+    
+
+def pie_chart_categories() :
+  n_tshirt = len(tshirt)
+  n_pull = len(pull)
+  n_pantalon = len(pantalon)
+  n_short = len(short)
+  n_all = n_tshirt + n_pull + n_pantalon + n_short
+  pct_tshirt = n_tshirt/n_all
+  pct_pull = n_pull/n_all
+  pct_pantalon = n_pantalon/n_all
+  pct_short = n_short / n_all
+  labels = ['T-shirt','Pull', 'Pantalon', 'Short']
+  sizes = [60,20,10,10]
+  explode = (0.05, 0.05,0.05,0.05)
+  colors = ['Wheat','PowderBlue','LightPink','MediumAquaMarine']
+  fig1, ax1 = plt.subplots()
+  ax1.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%',shadow=True, startangle=90)# Equal aspect ratio ensures that pie is drawn as a circle
+  ax1.axis('equal')
+  plt.title("Répartition des catégories de vêtements", fontsize=16)
+  plt.tight_layout()
+  plt.show()
 
     
     
