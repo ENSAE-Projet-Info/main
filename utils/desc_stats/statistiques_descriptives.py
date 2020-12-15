@@ -9,6 +9,7 @@ from PIL import Image
 import webcolors
 import random
 
+path = "main-main/utils/data/python_project_dataset"
 
 
 colour_dict = {'#FFFFFF' : 'Blanc',
