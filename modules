@@ -1,6 +1,7 @@
 #requierements for descriptive statistics analysis
 
 time
+sys
 webcolors==1.3
 opencv-contrib-python
 pandas
@@ -18,6 +19,7 @@ glob
 math
 imageai.Detection
 requests
+tensorflow==1.14.0
 
 #requierements for deep learning training
 
