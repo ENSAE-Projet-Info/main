@@ -9,7 +9,7 @@ from PIL import Image
 import webcolors
 import random
 
-path = "main-main/utils/data/python_project_dataset"
+path = "utils/data/python_project_dataset"
 
 
 colour_dict = {'#FFFFFF' : 'Blanc',
@@ -25,7 +25,7 @@ colour_dict = {'#FFFFFF' : 'Blanc',
               '#800080' : 'Violet',
               '#ff00aa': 'Rose'}
     
-def first_stats():
+def first_stats(path=path):
     """Indique le nombre de vêtements dans chaque classe ainsi que le pourcentage entre parenthèse, et qui trace un histogramme de la
     taille de chaque fichier
     
@@ -55,7 +55,7 @@ def first_stats():
                                                                                                round(len(short)/len(pull+tshirt+pantalon+short) * 100,2)))
 
     
-def two_random_images(classe):
+def two_random_images(classe, path=path):
     """Affiche deux images aléatoires de la classe "classe"
     
     Paramètre
@@ -107,7 +107,7 @@ def pie_chart_categories() :
     plt.tight_layout()
     plt.show()
 
-def pie_chart_fond_blanc () :
+def pie_chart_fond_blanc (path=path) :
     """Affiche le pie chart de la distribution des images sur fond blanc (avec les paramètres pré-calculés).
     
     Paramètres
