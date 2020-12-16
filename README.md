@@ -146,11 +146,7 @@ Statistique sur la répartitions des catégories de vêtements de la base de don
 pie_chart_categories()
 ```
 
-
-    
-![png](img_notebook/img_notebook/output_27_0.png)
-    
-
+<img src="https://i.imgur.com/vbnWZDg.png"> 
 
 On remarque ainsi une large sur-représentation de T-shirts dans la base de donnée, dû sans doute à une prédominance de ces articles sur le commerce de vêtements en ligne.
 
@@ -517,13 +513,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_60_0.png)
+![png](img_notebook/output_61_0.png)
     
 
 
 
     
-![png](img_notebook/output_60_1.png)
+![png](img_notebook/output_61_1.png)
     
 
 
@@ -532,13 +528,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_60_3.png)
+![png](img_notebook/output_61_3.png)
     
 
 
 
     
-![png](img_notebook/output_60_4.png)
+![png](img_notebook/output_61_4.png)
     
 
 
@@ -547,13 +543,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_60_6.png)
+![png](img_notebook/output_61_6.png)
     
 
 
 
     
-![png](img_notebook/output_60_7.png)
+![png](img_notebook/output_61_7.png)
     
 
 
@@ -562,13 +558,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_60_9.png)
+![png](img_notebook/output_61_9.png)
     
 
 
 
     
-![png](img_notebook/output_60_10.png)
+![png](img_notebook/output_61_10.png)
     
 
 
@@ -577,13 +573,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_60_12.png)
+![png](img_notebook/output_61_12.png)
     
 
 
 
     
-![png](img_notebook/output_60_13.png)
+![png](img_notebook/output_61_13.png)
     
 
 
@@ -592,13 +588,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_60_15.png)
+![png](img_notebook/output_61_15.png)
     
 
 
 
     
-![png](img_notebook/output_60_16.png)
+![png](img_notebook/output_61_16.png)
     
 
 
@@ -607,13 +603,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_60_18.png)
+![png](img_notebook/output_61_18.png)
     
 
 
 
     
-![png](img_notebook/output_60_19.png)
+![png](img_notebook/output_61_19.png)
     
 
 
@@ -622,13 +618,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_60_21.png)
+![png](img_notebook/output_61_21.png)
     
 
 
 
     
-![png](img_notebook/output_60_22.png)
+![png](img_notebook/output_61_22.png)
     
 
 
@@ -637,13 +633,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_60_24.png)
+![png](img_notebook/output_61_24.png)
     
 
 
 
     
-![png](img_notebook/output_60_25.png)
+![png](img_notebook/output_61_25.png)
     
 
 
@@ -652,13 +648,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_60_27.png)
+![png](img_notebook/output_61_27.png)
     
 
 
 
     
-![png](img_notebook/output_60_28.png)
+![png](img_notebook/output_61_28.png)
     
 
 
@@ -667,13 +663,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_60_30.png)
+![png](img_notebook/output_61_30.png)
     
 
 
 
     
-![png](img_notebook/output_60_31.png)
+![png](img_notebook/output_61_31.png)
     
 
 
@@ -682,13 +678,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_60_33.png)
+![png](img_notebook/output_61_33.png)
     
 
 
 
     
-![png](img_notebook/output_60_34.png)
+![png](img_notebook/output_61_34.png)
     
 
 
@@ -784,7 +780,7 @@ pie_chart_logo ()
 
 
     
-![png](img_notebook/output_65_0.png)
+![png](img_notebook/output_66_0.png)
     
 
 
@@ -854,13 +850,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de T-shirts à lo
 
 
     
-![png](img_notebook/output_78_0.png)
+![png](img_notebook/output_79_0.png)
     
 
 
 
     
-![png](img_notebook/output_78_1.png)
+![png](img_notebook/output_79_1.png)
     
 
 
@@ -869,13 +865,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de T-shirts à lo
 
 
     
-![png](img_notebook/output_78_3.png)
+![png](img_notebook/output_79_3.png)
     
 
 
 
     
-![png](img_notebook/output_78_4.png)
+![png](img_notebook/output_79_4.png)
     
 
 
@@ -884,13 +880,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de T-shirts à lo
 
 
     
-![png](img_notebook/output_78_6.png)
+![png](img_notebook/output_79_6.png)
     
 
 
 
     
-![png](img_notebook/output_78_7.png)
+![png](img_notebook/output_79_7.png)
     
 
 
@@ -899,13 +895,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de T-shirts à lo
 
 
     
-![png](img_notebook/output_78_9.png)
+![png](img_notebook/output_79_9.png)
     
 
 
 
     
-![png](img_notebook/output_78_10.png)
+![png](img_notebook/output_79_10.png)
     
 
 
@@ -914,13 +910,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de T-shirts à lo
 
 
     
-![png](img_notebook/output_78_12.png)
+![png](img_notebook/output_79_12.png)
     
 
 
 
     
-![png](img_notebook/output_78_13.png)
+![png](img_notebook/output_79_13.png)
     
 
 
@@ -929,13 +925,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de T-shirts à lo
 
 
     
-![png](img_notebook/output_78_15.png)
+![png](img_notebook/output_79_15.png)
     
 
 
 
     
-![png](img_notebook/output_78_16.png)
+![png](img_notebook/output_79_16.png)
     
 
 
@@ -944,13 +940,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de T-shirts à lo
 
 
     
-![png](img_notebook/output_78_18.png)
+![png](img_notebook/output_79_18.png)
     
 
 
 
     
-![png](img_notebook/output_78_19.png)
+![png](img_notebook/output_79_19.png)
     
 
 
@@ -959,13 +955,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de T-shirts à lo
 
 
     
-![png](img_notebook/output_78_21.png)
+![png](img_notebook/output_79_21.png)
     
 
 
 
     
-![png](img_notebook/output_78_22.png)
+![png](img_notebook/output_79_22.png)
     
 
 
@@ -1020,7 +1016,7 @@ pie_chart_fond_blanc()
 
 
     
-![png](img_notebook/output_82_0.png)
+![png](img_notebook/output_83_0.png)
     
 
 
@@ -1101,7 +1097,7 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_94_0.png)
+![png](img_notebook/output_95_0.png)
     
 
 
@@ -1110,7 +1106,7 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_94_2.png)
+![png](img_notebook/output_95_2.png)
     
 
 
@@ -1119,7 +1115,7 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_94_4.png)
+![png](img_notebook/output_95_4.png)
     
 
 
@@ -1128,7 +1124,7 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_94_6.png)
+![png](img_notebook/output_95_6.png)
     
 
 
@@ -1137,7 +1133,7 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_94_8.png)
+![png](img_notebook/output_95_8.png)
     
 
 
@@ -1146,7 +1142,7 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_94_10.png)
+![png](img_notebook/output_95_10.png)
     
 
 
@@ -1155,7 +1151,7 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_94_12.png)
+![png](img_notebook/output_95_12.png)
     
 
 
@@ -1164,7 +1160,7 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_94_14.png)
+![png](img_notebook/output_95_14.png)
     
 
 
@@ -1173,7 +1169,7 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_94_16.png)
+![png](img_notebook/output_95_16.png)
     
 
 
@@ -1182,7 +1178,7 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_94_18.png)
+![png](img_notebook/output_95_18.png)
     
 
 
@@ -1191,7 +1187,7 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_94_20.png)
+![png](img_notebook/output_95_20.png)
     
 
 
@@ -1200,7 +1196,7 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_94_22.png)
+![png](img_notebook/output_95_22.png)
     
 
 
@@ -1285,7 +1281,7 @@ pie_chart_human_model ()
 
 
     
-![png](img_notebook/output_99_0.png)
+![png](img_notebook/output_100_0.png)
     
 
 
@@ -1474,7 +1470,7 @@ dls.show_batch(max_n=20)
 
 
     
-![png](img_notebook/output_123_0.png)
+![png](img_notebook/output_124_0.png)
     
 
 
@@ -1502,7 +1498,7 @@ dls.train.show_batch(max_n=8, nrows=2, unique=True)
 
 
     
-![png](img_notebook/output_126_0.png)
+![png](img_notebook/output_127_0.png)
     
 
 
@@ -1576,7 +1572,7 @@ learn.fine_tune(4)
 
 
     
-![png](img_notebook/output_133_1.png)
+![png](img_notebook/output_134_1.png)
     
 
 
@@ -1626,7 +1622,7 @@ learn.fine_tune(4)
 
 
     
-![png](img_notebook/output_133_3.png)
+![png](img_notebook/output_134_3.png)
     
 
 
@@ -1662,7 +1658,7 @@ learn.lr_find()
 
 
     
-![png](img_notebook/output_137_2.png)
+![png](img_notebook/output_138_2.png)
     
 
 
@@ -1704,7 +1700,7 @@ learn.fine_tune(4,base_lr=2.0892961401841602e-06)
 
 
     
-![png](img_notebook/output_140_1.png)
+![png](img_notebook/output_141_1.png)
     
 
 
@@ -1754,7 +1750,7 @@ learn.fine_tune(4,base_lr=2.0892961401841602e-06)
 
 
     
-![png](img_notebook/output_140_3.png)
+![png](img_notebook/output_141_3.png)
     
 
 
@@ -1778,7 +1774,7 @@ interp.plot_confusion_matrix(figsize=(6,6))
 
 
     
-![png](img_notebook/output_144_0.png)
+![png](img_notebook/output_145_0.png)
     
 
 
@@ -1806,7 +1802,7 @@ interp.plot_top_losses(9, nrows=3)
 
 
     
-![png](img_notebook/output_146_0.png)
+![png](img_notebook/output_147_0.png)
     
 
 
@@ -1893,7 +1889,7 @@ learn.lr_find()
 
 
     
-![png](img_notebook/output_156_2.png)
+![png](img_notebook/output_157_2.png)
     
 
 
@@ -1933,7 +1929,7 @@ learn.fine_tune(4,base_lr=0.010000000149011612)
 
 
     
-![png](img_notebook/output_158_1.png)
+![png](img_notebook/output_159_1.png)
     
 
 
@@ -1983,7 +1979,7 @@ learn.fine_tune(4,base_lr=0.010000000149011612)
 
 
     
-![png](img_notebook/output_158_3.png)
+![png](img_notebook/output_159_3.png)
     
 
 
