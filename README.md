@@ -146,7 +146,11 @@ Statistique sur la répartitions des catégories de vêtements de la base de don
 pie_chart_categories()
 ```
 
-<img src="https://i.imgur.com/vbnWZDg.png"> 
+
+    
+![png](img_notebook/output_27_0.png)
+    
+
 
 On remarque ainsi une large sur-représentation de T-shirts dans la base de donnée, dû sans doute à une prédominance de ces articles sur le commerce de vêtements en ligne.
 
@@ -513,13 +517,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_61_0.png)
+![png](img_notebook/output_60_0.png)
     
 
 
 
     
-![png](img_notebook/output_61_1.png)
+![png](img_notebook/output_60_1.png)
     
 
 
@@ -528,13 +532,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_61_3.png)
+![png](img_notebook/output_60_3.png)
     
 
 
 
     
-![png](img_notebook/output_61_4.png)
+![png](img_notebook/output_60_4.png)
     
 
 
@@ -543,13 +547,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_61_6.png)
+![png](img_notebook/output_60_6.png)
     
 
 
 
     
-![png](img_notebook/output_61_7.png)
+![png](img_notebook/output_60_7.png)
     
 
 
@@ -558,13 +562,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_61_9.png)
+![png](img_notebook/output_60_9.png)
     
 
 
 
     
-![png](img_notebook/output_61_10.png)
+![png](img_notebook/output_60_10.png)
     
 
 
@@ -573,13 +577,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_61_12.png)
+![png](img_notebook/output_60_12.png)
     
 
 
 
     
-![png](img_notebook/output_61_13.png)
+![png](img_notebook/output_60_13.png)
     
 
 
@@ -588,13 +592,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_61_15.png)
+![png](img_notebook/output_60_15.png)
     
 
 
 
     
-![png](img_notebook/output_61_16.png)
+![png](img_notebook/output_60_16.png)
     
 
 
@@ -603,13 +607,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_61_18.png)
+![png](img_notebook/output_60_18.png)
     
 
 
 
     
-![png](img_notebook/output_61_19.png)
+![png](img_notebook/output_60_19.png)
     
 
 
@@ -618,13 +622,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_61_21.png)
+![png](img_notebook/output_60_21.png)
     
 
 
 
     
-![png](img_notebook/output_61_22.png)
+![png](img_notebook/output_60_22.png)
     
 
 
@@ -633,13 +637,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_61_24.png)
+![png](img_notebook/output_60_24.png)
     
 
 
 
     
-![png](img_notebook/output_61_25.png)
+![png](img_notebook/output_60_25.png)
     
 
 
@@ -648,13 +652,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_61_27.png)
+![png](img_notebook/output_60_27.png)
     
 
 
 
     
-![png](img_notebook/output_61_28.png)
+![png](img_notebook/output_60_28.png)
     
 
 
@@ -663,13 +667,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_61_30.png)
+![png](img_notebook/output_60_30.png)
     
 
 
 
     
-![png](img_notebook/output_61_31.png)
+![png](img_notebook/output_60_31.png)
     
 
 
@@ -678,13 +682,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/output_61_33.png)
+![png](img_notebook/output_60_33.png)
     
 
 
 
     
-![png](img_notebook/output_61_34.png)
+![png](img_notebook/output_60_34.png)
     
 
 
@@ -765,24 +769,22 @@ print("Il y a au total", percentage_white_background_all ,"% d'habits sur fond b
 Au total, après calcul, nous avons trouvé **89%** de T-Shirts sur fond blanc, **85%** de Pulls sur fond blanc, **70%** de Shorts sur fond blanc, **89%** de Pantalons sur fond blanc, pour un total de **86%** photos sur fond blanc. Il y a une légère différence sur le taux de Shorts sur fond blanc avec le reste des habits (qui pourrait être dû à notre algorithme grossier tout comme à la base de données), mais globalement les images sur fond blanc restent très dominantes sur l'ensemble des photos.
 
 
+```python
+?pie_chart_fond_blanc
+```
+
+
+```python
+pie_chart_fond_blanc()
+```
+
+
+    
+![png](img_notebook/output_65_0.png)
+    
+
 
 Il semblerait donc que cette base de données fournit un cadre idoine à l'apprentissage d'un algorithme de Deep Learning de ce point de vue. Et c'est sans compter encore une fois sur les photos sur fond gris qui ont été ignorées par notre algorithme naïf ci-dessus, mais qui ne tromperons par un algorithme plus développé.
-
-
-```python
-?pie_chart_logo
-```
-
-
-```python
-pie_chart_logo ()
-```
-
-
-    
-![png](img_notebook/output_66_0.png)
-    
-
 
 ## 4 )    Le cas particulier des T-Shirts : statistique sur les logos
 
@@ -1006,12 +1008,12 @@ print("Il y a", percentage_logo_tshirt ,"% de T-shirts à logo.\n")
 
 
 ```python
-?pie_chart_fond_blanc
+?pie_chart_logo
 ```
 
 
 ```python
-pie_chart_fond_blanc()
+pie_chart_logo ()
 ```
 
 
@@ -1806,6 +1808,10 @@ interp.plot_top_losses(9, nrows=3)
     
 
 
+Nous remarquons que les elements de l'ensemble de validation sur lesquels l'algorithme s'est le plus trompé en terme de 'loss' sont en réalité des images mal categorisée dans la base de données..(mauvais resultats retournés par le moteur de recherche de l'enseigne).
+
+Ceci met en évidence l'excellente efficacité de la configuration de notre modele.
+
 ### 3. Itération finale - Nettoyage de la BDD + Optimisation des hyperparametres
 
 
@@ -1889,7 +1895,7 @@ learn.lr_find()
 
 
     
-![png](img_notebook/output_157_2.png)
+![png](img_notebook/output_158_2.png)
     
 
 
@@ -1929,7 +1935,7 @@ learn.fine_tune(4,base_lr=0.010000000149011612)
 
 
     
-![png](img_notebook/output_159_1.png)
+![png](img_notebook/output_160_1.png)
     
 
 
@@ -1979,11 +1985,11 @@ learn.fine_tune(4,base_lr=0.010000000149011612)
 
 
     
-![png](img_notebook/output_159_3.png)
+![png](img_notebook/output_160_3.png)
     
 
 
-Nous tendons vers **95% d'accuracy** et ces resultats robustes. On pouura plus ameliorer grandement les resultats
+Nous tendons vers **95% d'accuracy** et ces resultats robustes. On ne pourra plus ameliorer grandement les resultats ayant atteint les limites du rendement de l'optimisation.
 
 
 ## V - Export du meilleur modele en vue du deploiement sur la *web-app*
