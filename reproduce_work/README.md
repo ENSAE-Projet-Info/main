@@ -7,7 +7,7 @@ Aller directement au niveau de utils/scraping.data_scraping.py, specifier les ch
 
 ## Partie Statistique Descriptive :
 Ci-après la démarche à suivre:
-* Upload du fichier Notebook_Statistiques.ipynb à la racine de ce dossier
+* Placer le fichier Notebook_AiDress_Statistiques_Descriptives.ipynb à la racine du projet
 * Installer les modules nécéssaires qui ne sont probablement pas installés sur votre machine :
 
 ```
@@ -23,7 +23,6 @@ Ci-après la démarche à suivre:
 Les autres modules sont specifiés dans le fichier module à la racine de ce dossier.
 
 * Il ne reste plus qu'à exécuter les cellules du  notebook une par une. Attention, certaines fonctions peuvent prendre jusqu'à plusieurs heures, cela est indiqué quand c'est le cas et des alternatives sont proposées.
-
 
 
 ## Partie Modélisation : 
