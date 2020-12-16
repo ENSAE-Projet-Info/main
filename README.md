@@ -127,7 +127,7 @@ pie_chart_categories()
 
 
     
-![png](img_notebook/img_notebook/output_23_0.png)
+![png](img_notebook/output_23_0.png)
     
 
 
@@ -498,13 +498,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/img_notebook/output_57_0.png)
+![png](img_notebook/output_57_0.png)
     
 
 
 
     
-![png](img_notebook/img_notebook/output_57_1.png)
+![png](img_notebook/output_57_1.png)
     
 
 
@@ -513,13 +513,13 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/img_notebook/output_57_3.png)
+![png](img_notebook/output_57_3.png)
     
 
 
 
     
-![png](img_notebook/img_notebook/output_57_4.png)
+![png](img_notebook/output_57_4.png)
     
 
 
@@ -528,7 +528,7 @@ print("Dans l'échantillon donné, il y a",pourcent_sample ,"% de photos sur fon
 
 
     
-![png](img_notebook/img_notebook/output_57_6.png)
+![png](img_notebook/output_57_6.png)
     
 
 
