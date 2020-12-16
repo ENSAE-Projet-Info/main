@@ -1,4 +1,4 @@
-from vars2 import *
+from vars_ext import *
 from PIL import Image
 import pandas as pd
 import seaborn as sns
@@ -15,7 +15,7 @@ import cv2
 from math import log
 from imageai.Detection import ObjectDetection as od
 import requests as req
-from statistiques_descriptives2 import *
+from statistiques_descriptives_ext import *
 
 image = Image.open(path+'/pull/' + pull[0])
 colour_dict = {'#FFFFFF' : 'Blanc',
