@@ -41,8 +41,8 @@ def scrap_garments(garment_classes,save_path,chromedriver_path):
     for garment in garment_classes:
         
         print('*'* 5 + ' {} Images Scraping '.format(garment) + '*'* 5)
-        
-        os.makedirs('/Users/zakariabekkar/Downloads/python_project_dataset/{}'.format(garment))
+ 
+        os.makedirs('{}/{}/'.format(save_path,garment))
         
         # Initializing the first target page for the selected garment
         driver.get('https://www.auchan.fr/recherche?text={}&engine=fh&categorylevel1=categorylevel120160914933'.format(garment))
@@ -71,7 +71,7 @@ def scrap_garments(garment_classes,save_path,chromedriver_path):
                     urllib.request.urlretrieve(img_link,img_path)
                     print('Article Ddl Done !')
                     
-                #driver.find_element_by_css_selector('#wrapper > nav > div > a.ui-pagination--next').click()
+                
                 WebDriverWait(driver, 3).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#wrapper > nav > div > a.ui-pagination--next"))).click()
 
                 
@@ -93,4 +93,7 @@ def scrap_garments(garment_classes,save_path,chromedriver_path):
 
 if __name__ == '__main__':
 
-    scrap_garments(['tshirt','pantalon','pull','short'])
+    save_path = 'yourpath'
+    chromedriver_path = 'yourpath'
+
+    scrap_garments(['tshirt','pantalon','pull','short'],save_path,chromedriver_path)
