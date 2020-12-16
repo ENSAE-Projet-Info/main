@@ -15,8 +15,7 @@ import cv2
 from math import log
 from imageai.Detection import ObjectDetection as od
 import requests as req
-from vars import *
-
+from utils.desc_stats.vars import *
     
 def first_stats():
     """Indique le nombre de vêtements dans chaque classe ainsi que le pourcentage entre parenthèse, et qui trace un histogramme de la
