@@ -15,7 +15,7 @@ import cv2
 from math import log
 from imageai.Detection import ObjectDetection as od
 import requests as req
-from vars import *
+from vars2 import *
 
     
 def first_stats():

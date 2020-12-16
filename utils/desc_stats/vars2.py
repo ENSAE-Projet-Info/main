@@ -1,14 +1,14 @@
 import os
 
-path = "utils/data/python_project_dataset"
-path2 = "../data/python_project_dataset"
+
+path = "../data/python_project_dataset"
+
+
 
 pull = os.listdir(path=path+'/pull')
 tshirt = os.listdir(path=path+'/tshirt')
 short = os.listdir(path=path+'/short')
 pantalon = os.listdir(path=path+'/pantalon')
-
-
 
 colour_dict = {'#FFFFFF' : 'Blanc',
               '#000000' : 'Noir',
