@@ -35,7 +35,8 @@ Ci-après la démarche à suivre:
 * Vous n'aurez plus qu'a executer les celulles, une fonction permet d'installer et d'importer tous les modules nécessaire au bon fonctionnement du notebook
     
 ## Partie Web App :
-L'application est accessible live à l'adresse : https://aidress.onrender.com/
+L'application est accessible live à l'adresse : https://aidress.onrender.com/ .
+
 Si vous le souhaitez, vous pouvez, après avoir installer Docker, lancer la commande suivante à la racine du projet:
 
 *docker build -t dressai*
