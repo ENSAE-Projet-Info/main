@@ -12,6 +12,7 @@ Ci-après la démarche à suivre:
 
 ```
 # import sys
+!{sys.executable} -m pip install keras==2.0.8
 !{sys.executable} -m pip install opencv-python
 !{sys.executable} -m pip install imageai
 !{sys.executable} -m pip install requests
