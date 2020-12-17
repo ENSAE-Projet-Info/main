@@ -1,5 +1,7 @@
 # Reproduction notre travail 
 
+Version de Python requise : Python 3.7
+
 **Les fichiers correspondant aux différentes étapes de notre travail seront à déplacer à la racine du projet afin de pouvoir accéder à la librairie *utils* que nous avons écrite pour l'occasion**
 
 ## Partie Web App Scraping :
