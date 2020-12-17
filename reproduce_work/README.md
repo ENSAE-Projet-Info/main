@@ -1,4 +1,4 @@
-Version de Python requise : Python 3.7
+Version de Python requise : **Python 3.7**.
 
 # Reproduction notre travail 
 
