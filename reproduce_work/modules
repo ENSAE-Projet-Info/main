@@ -21,6 +21,7 @@ math
 imageai.Detection
 requests
 tensorflow==1.14.0
+selenium
 
 #requierements for deep learning training
 
