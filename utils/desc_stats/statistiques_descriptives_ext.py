@@ -1,6 +1,7 @@
 import PIL
 from PIL import Image
 import pandas as pd
+import time
 import seaborn as sns
 import numpy as np
 import scipy
