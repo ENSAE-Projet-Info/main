@@ -20,6 +20,7 @@ Ci-après la démarche à suivre:
 !{sys.executable} -m pip install requests
 !{sys.executable} -m pip install tensorflow==1.14.0
 !{sys.executable} -m pip install webcolors
+!{sys.executable} -m pip install h5py==2.10.0
 
 ```
 Les autres modules sont specifiés dans le fichier module à la racine de ce dossier.
