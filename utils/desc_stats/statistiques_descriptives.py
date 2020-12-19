@@ -756,12 +756,7 @@ def is_human_model(path, limit_percent=95) :
     """
     modelRetinaNet = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/resnet50_coco_best_v2.0.1.h5'
     modelYOLOv3 = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5'
-    modelTinyYOLOv3 = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo-tiny.h5'    
-    if not os.path.exists('yolo.h5'):
-        r = req.get(modelYOLOv3)
-    with open('yolo.h5', 'wb') as outfile:
-        outfile.write(r.content)
-            
+    modelTinyYOLOv3 = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo-tiny.h5'
     detector = od()
     detector.setModelTypeAsYOLOv3()
     detector.setModelPath('yolo.h5')
@@ -800,12 +795,7 @@ def is_human_model_feedback(path, limit_percent=95) :
     """
     modelRetinaNet = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/resnet50_coco_best_v2.0.1.h5'
     modelYOLOv3 = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5'
-    modelTinyYOLOv3 = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo-tiny.h5'    
-    if not os.path.exists('yolo.h5'):
-        r = req.get(modelYOLOv3)
-    with open('yolo.h5', 'wb') as outfile:
-        outfile.write(r.content)
-            
+    modelTinyYOLOv3 = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo-tiny.h5'           
     detector = od()
     detector.setModelTypeAsYOLOv3()
     detector.setModelPath('yolo.h5')
