@@ -706,8 +706,37 @@ def is_white_background_feedback(img_jpg,threshold=245, dist=5, percentage=30) :
     else :
         print("PAS DE FOND BLANC. Pourcentage de pixels blancs : ",white_percent)
         return (0, white_percent )
-    
+   
 
+
+
+def load_human_model() :
+    """Charge le modèle de reconnaissance humaine pour la partie Statistiques Descriptives. Temps de chargement : dépend de la connexion, le fichier pèse 259Mo. 10 minutes pour les connexions les plus basses.
+    
+    Paramètres
+    ----------
+    None
+    
+    Retours
+    -------
+    None
+        Après exécution, le modèle est bien chargé pour les algorithmes qui en ont besoin.
+ 
+    """
+    modelRetinaNet = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/resnet50_coco_best_v2.0.1.h5'
+    modelYOLOv3 = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5'
+    modelTinyYOLOv3 = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo-tiny.h5'    
+    if not os.path.exists('yolo.h5'):
+        r = req.get(modelYOLOv3)
+        with open('yolo.h5', 'wb') as outfile:
+            outfile.write(r.content)
+            
+    detector = od()
+    detector.setModelTypeAsYOLOv3()
+    detector.setModelPath('yolo.h5')
+    detector.loadModel()
+
+    
 
     
 def is_human_model(path, limit_percent=95) :
@@ -725,6 +754,18 @@ def is_human_model(path, limit_percent=95) :
     list
         Retourne une liste dont le premier argument est un booléen : True si le vêtement est porté par un modèle humain, False sinon ; le second argument est le pourcentage de certitude de l'algorithme.
     """
+    modelRetinaNet = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/resnet50_coco_best_v2.0.1.h5'
+    modelYOLOv3 = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5'
+    modelTinyYOLOv3 = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo-tiny.h5'    
+    if not os.path.exists('yolo.h5'):
+        r = req.get(modelYOLOv3)
+    with open('yolo.h5', 'wb') as outfile:
+        outfile.write(r.content)
+            
+    detector = od()
+    detector.setModelTypeAsYOLOv3()
+    detector.setModelPath('yolo.h5')
+    detector.loadModel() 
     detectedImage, detections = detector.detectObjectsFromImage(output_type="array",input_image=path,minimum_percentage_probability =-1)
     convertedImage = cv2.cvtColor(detectedImage, cv2.COLOR_RGB2BGR)
     
@@ -757,7 +798,18 @@ def is_human_model_feedback(path, limit_percent=95) :
     float
         Pourcentage de certitude avec lequel l'algorithme estime que l'image en question contient un humain.
     """
-   
+    modelRetinaNet = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/resnet50_coco_best_v2.0.1.h5'
+    modelYOLOv3 = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5'
+    modelTinyYOLOv3 = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo-tiny.h5'    
+    if not os.path.exists('yolo.h5'):
+        r = req.get(modelYOLOv3)
+    with open('yolo.h5', 'wb') as outfile:
+        outfile.write(r.content)
+            
+    detector = od()
+    detector.setModelTypeAsYOLOv3()
+    detector.setModelPath('yolo.h5')
+    detector.loadModel() 
     detectedImage, detections = detector.detectObjectsFromImage(output_type="array",input_image=path,minimum_percentage_probability =-1)
     convertedImage = cv2.cvtColor(detectedImage, cv2.COLOR_RGB2BGR)
 
